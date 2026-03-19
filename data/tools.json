@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "singapore-flow-intelligence",
+    "title": "Singapore Flow Intelligence Explorer",
+    "description": "An interpretive tool designed to help users understand how commodities, regions, and maritime functions interact through Singapore as a control node.",
+    "status": "planned",
+    "priority": "high",
+    "tool_type": "interpretive",
+    "intended_users": [
+      "researchers",
+      "students",
+      "commodity professionals"
+    ],
+    "outputs": [
+      "commodity-node interpretation",
+      "route relevance explanation",
+      "strategic significance summary"
+    ]
+  }
+]
