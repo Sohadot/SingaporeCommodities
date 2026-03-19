@@ -1,0 +1,65 @@
+{
+  "site_name": "SingaporeCommodities.com",
+  "short_name": "Singapore Commodities",
+  "domain": "singaporecommodities.com",
+  "base_url": "https://singaporecommodities.com",
+  "language": "en",
+  "languages": ["en", "fr", "ar"],
+  "default_language": "en",
+  "tagline": "Strategic Commodity Intelligence Node",
+  "description": "Singapore Commodities is a strategic intelligence platform examining Singapore as a maritime commodity control node through LNG, bunkering, routing, logistics, and trade coordination.",
+  "theme_color": "#0b1220",
+  "repository_name": "singaporecommodities",
+  "brand_positioning": "A sovereign digital reference asset built around Singapore's role in the architecture of global commodity movement.",
+  "navigation": [
+    {
+      "label": "Manifesto",
+      "href": "/manifesto/"
+    },
+    {
+      "label": "Framework",
+      "href": "/framework/"
+    },
+    {
+      "label": "Tools",
+      "href": "/tools/"
+    },
+    {
+      "label": "Articles",
+      "href": "/articles/"
+    },
+    {
+      "label": "Chronicles",
+      "href": "/chronicles/"
+    },
+    {
+      "label": "Guide",
+      "href": "/guide/"
+    },
+    {
+      "label": "About",
+      "href": "/about/"
+    },
+    {
+      "label": "Join",
+      "href": "/join/"
+    }
+  ],
+  "security": {
+    "static_first": true,
+    "csp_enabled": true,
+    "external_scripts_default": false,
+    "forms_protected": true
+  },
+  "seo": {
+    "programmatic_ready": true,
+    "multilingual_ready": true,
+    "default_robots": "index,follow",
+    "sitemap_enabled": true,
+    "rss_enabled": true
+  },
+  "analytics": {
+    "gtm_id": "",
+    "ga4_id": ""
+  }
+}
