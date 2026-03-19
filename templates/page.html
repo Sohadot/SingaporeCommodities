@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+  <div class="container narrow">
+    <h1>{{ title }}</h1>
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+  </div>
+</section>
+{% endblock %}
