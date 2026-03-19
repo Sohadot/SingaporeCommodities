@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Strategic Tool</p>
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ description }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container narrow prose">
+    <p>
+      This tool is designed as an interpretive layer for understanding how
+      Singapore functions as a commodity control node.
+    </p>
+
+    <label for="commodity">Commodity</label>
+    <select id="commodity">
+      <option value="lng">LNG</option>
+      <option value="oil">Oil</option>
+      <option value="bunkering-fuel">Bunkering Fuel</option>
+      <option value="palm-oil">Palm Oil</option>
+      <option value="metals">Metals</option>
+    </select>
+
+    <label for="function">Function</label>
+    <select id="function">
+      <option value="routing">Routing</option>
+      <option value="coordination">Coordination</option>
+      <option value="bunkering">Bunkering</option>
+      <option value="stabilization">Stabilization</option>
+    </select>
+
+    <button id="analyze-button" type="button">Analyze</button>
+
+    <div id="tool-result" class="tool-result">
+      Select a commodity and function to generate an interpretive output.
+    </div>
+  </div>
+</section>
+
+<script src="/assets/js/flow-explorer.js"></script>
+{% endblock %}
