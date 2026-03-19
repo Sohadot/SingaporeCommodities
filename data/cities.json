@@ -1,0 +1,83 @@
+[
+  {
+    "slug": "singapore",
+    "title": "Singapore Commodities",
+    "domain": "singaporecommodities.com",
+    "status": "active",
+    "scope": "primary",
+    "city_name": "Singapore",
+    "country": "Singapore",
+    "region": "Asia",
+    "classification": "maritime-control-node",
+    "narrative_role": "Singapore functions as a maritime commodity control node where flows are coordinated, redirected, stabilized, and translated into strategic power.",
+    "hero_title": "Singapore Commodities",
+    "hero_subtitle": "The Maritime Commodity Gateway of Asia",
+    "thesis": "Singapore is not where commodities merely arrive — it is where global flows are organized, redirected, stabilized, and transformed into operational and strategic influence.",
+    "description": "A strategic reference layer examining Singapore through LNG, bunkering, maritime routing, logistics density, and trade coordination.",
+    "reference_paths": [
+      {
+        "slug": "lng",
+        "title": "Singapore & LNG",
+        "status": "planned"
+      },
+      {
+        "slug": "bunkering",
+        "title": "Singapore & Bunkering",
+        "status": "planned"
+      },
+      {
+        "slug": "maritime-routing",
+        "title": "Singapore & Maritime Routing",
+        "status": "planned"
+      },
+      {
+        "slug": "commodity-coordination",
+        "title": "Singapore & Commodity Coordination",
+        "status": "planned"
+      },
+      {
+        "slug": "asia-trade-gateway",
+        "title": "Singapore as an Asian Trade Gateway",
+        "status": "planned"
+      }
+    ],
+    "core_dimensions": [
+      "routing",
+      "bunkering",
+      "lng",
+      "trade coordination",
+      "maritime infrastructure",
+      "regional flow stabilization"
+    ],
+    "research_audience": [
+      "researchers",
+      "students",
+      "commodity professionals",
+      "strategic investors"
+    ],
+    "sections": [
+      {
+        "heading": "Maritime Flow Control",
+        "body": "Singapore sits at the intersection of major shipping corridors. Its relevance comes from coordination, routing, port density, refueling ecosystems, and the ability to redirect movement with exceptional operational efficiency."
+      },
+      {
+        "heading": "Commodity Relevance",
+        "body": "Energy, LNG, oil-linked products, bunkering systems, and maritime-facing commodity activity all intersect within Singapore's sphere of influence."
+      },
+      {
+        "heading": "Strategic Interpretation",
+        "body": "Singapore demonstrates a modern form of economic power in which control does not depend on extraction alone, but on the intelligent organization of movement."
+      }
+    ],
+    "key_points": [
+      "Singapore's importance lies in coordination rather than extraction.",
+      "Its strategic relevance is strongest in LNG, maritime fuel, routing, and logistics.",
+      "It serves as an interpretive model for how commodity power is built through flow control.",
+      "It is the primary active node within this project's current scope."
+    ],
+    "system_context": {
+      "belongs_to_global_architecture": true,
+      "global_architecture_note": "Singapore is treated as a primary node within a wider conceptual architecture of strategic commodity cities, but this repository currently develops Singapore only."
+    }
+  }
+]
