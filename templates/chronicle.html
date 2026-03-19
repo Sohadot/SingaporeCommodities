@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="chronicle">
+  <div class="container narrow">
+    <h1>{{ title }}</h1>
+    <p class="chronicle-meta">Chronicle Entry</p>
+
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+  </div>
+</article>
+{% endblock %}
