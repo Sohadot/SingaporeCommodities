@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Strategic Commodity Node</p>
+    <h1>{{ city.title }}</h1>
+    <p class="lead">{{ city.hero_subtitle }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container narrow prose">
+    <h2>Core Thesis</h2>
+    <p>{{ city.thesis }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container cards">
+    {% for section in city.sections %}
+    <article class="card">
+      <h3>{{ section.heading }}</h3>
+      <p>{{ section.body }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container narrow">
+    <h2>Reference Paths</h2>
+    <ul>
+      {% for path in city.reference_paths %}
+      <li>{{ path.title }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{% endblock %}
