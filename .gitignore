@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.env
+.DS_Store
+Thumbs.db
+
+# Generated output
+public/
+
+# Local editor settings
+.vscode/
+.idea/
