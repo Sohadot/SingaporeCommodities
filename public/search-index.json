@@ -1,0 +1,66 @@
+[
+  {
+    "url": "/",
+    "title": "Home"
+  },
+  {
+    "url": "/about/",
+    "title": "About"
+  },
+  {
+    "url": "/framework/",
+    "title": "Framework"
+  },
+  {
+    "url": "/join/",
+    "title": "Join"
+  },
+  {
+    "url": "/manifesto/",
+    "title": "Manifesto"
+  },
+  {
+    "url": "/tools/",
+    "title": "Tools"
+  },
+  {
+    "url": "/tools/singapore-flow-intelligence/",
+    "title": "Tools/Singapore Flow Intelligence"
+  },
+  {
+    "url": "/guide/how-maritime-trade-flows-work/",
+    "title": "Guide/How Maritime Trade Flows Work"
+  },
+  {
+    "url": "/guide/routing-vs-production-in-commodity-power/",
+    "title": "Guide/Routing Vs Production In Commodity Power"
+  },
+  {
+    "url": "/guide/what-is-a-commodity-node/",
+    "title": "Guide/What Is A Commodity Node"
+  },
+  {
+    "url": "/framework/singapore/",
+    "title": "Framework/Singapore"
+  },
+  {
+    "url": "/chronicles/cc-001-asia-energy-realignment/",
+    "title": "Chronicles/Cc 001 Asia Energy Realignment"
+  },
+  {
+    "url": "/chronicles/cc-002-pressure-on-maritime-routes/",
+    "title": "Chronicles/Cc 002 Pressure On Maritime Routes"
+  },
+  {
+    "url": "/articles/how-singapore-organizes-commodity-flows/",
+    "title": "Articles/How Singapore Organizes Commodity Flows"
+  },
+  {
+    "url": "/articles/singapore-and-maritime-fuel-power/",
+    "title": "Articles/Singapore And Maritime Fuel Power"
+  },
+  {
+    "url": "/articles/why-singapore-dominates-lng-trade/",
+    "title": "Articles/Why Singapore Dominates Lng Trade"
+  }
+]
