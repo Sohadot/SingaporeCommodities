@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "lng",
+    "name": "Liquefied Natural Gas",
+    "short_name": "LNG",
+    "category": "energy",
+    "relevance_to_singapore": "high",
+    "narrative_angle": "LNG highlights Singapore's role as a maritime coordination and routing node within Asian energy systems."
+  },
+  {
+    "slug": "oil",
+    "name": "Oil",
+    "short_name": "Oil",
+    "category": "energy",
+    "relevance_to_singapore": "high",
+    "narrative_angle": "Oil reinforces Singapore's importance through shipping, fuel systems, maritime services, and route-linked strategic positioning."
+  },
+  {
+    "slug": "bunkering-fuel",
+    "name": "Bunkering Fuel",
+    "short_name": "Bunkering",
+    "category": "maritime-energy",
+    "relevance_to_singapore": "very_high",
+    "narrative_angle": "Bunkering expresses Singapore's logistical sovereignty by sustaining the continuity of maritime movement."
+  },
+  {
+    "slug": "palm-oil",
+    "name": "Palm Oil",
+    "short_name": "Palm Oil",
+    "category": "agriculture",
+    "relevance_to_singapore": "medium",
+    "narrative_angle": "Palm oil reflects Singapore's commercial and routing relevance within Southeast Asian trade ecosystems."
+  },
+  {
+    "slug": "metals",
+    "name": "Industrial Metals",
+    "short_name": "Metals",
+    "category": "industrial",
+    "relevance_to_singapore": "medium",
+    "narrative_angle": "Metals matter through routing, port-linked movement, industrial supply systems, and trade-oriented logistics."
+  }
+]
