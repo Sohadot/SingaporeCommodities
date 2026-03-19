@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="guide">
+  <div class="container narrow">
+    <h1>{{ title }}</h1>
+
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+  </div>
+</article>
+{% endblock %}
