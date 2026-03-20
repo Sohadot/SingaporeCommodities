@@ -1,9 +1,75 @@
+# =========================
+# Python
+# =========================
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+
+# =========================
+# Build Output (CRITICAL)
+# =========================
+dist/
+build/
+public/
+
+# NEVER commit generated site
+*.html
+!templates/*.html
+
+# Generated metadata
+sitemap.xml
+rss.xml
+robots.txt
+search-index.json
+site-schema.json
+BUILD_INFO.txt
+build-manifest.json
+
+# =========================
+# Environment / Secrets
+# =========================
 .env
+.env.*
+*.env
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# OS / System Files
+# =========================
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Local editor settings
+# =========================
+# Editor / IDE
+# =========================
 .vscode/
 .idea/
+*.swp
+*.swo
+
+# =========================
+# Node / Frontend (if added later)
+# =========================
+node_modules/
+package-lock.json
+yarn.lock
+
+# =========================
+# Cloudflare / Wrangler
+# =========================
+.wrangler/
