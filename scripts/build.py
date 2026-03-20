@@ -1,4 +1,5 @@
-from datetime import datetime
+import shutil
+from datetime import datetime, UTC
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from utils import load_json, write_text, ensure_dir, ROOT
@@ -21,7 +22,7 @@ def render_base(title, description, canonical, content):
         description=description,
         canonical=canonical,
         content=content,
-        year=datetime.utcnow().year
+        year=datetime.now(UTC).year
     )
 
 
@@ -177,6 +178,21 @@ def build_tools_index():
     write_text("public/tools/index.html", final_html)
 
 
+def copy_assets():
+    source_assets = ROOT / "assets"
+    target_assets = ROOT / "public" / "assets"
+
+    if not source_assets.exists():
+        print("No assets directory found. Skipping asset copy.")
+        return
+
+    if target_assets.exists():
+        shutil.rmtree(target_assets)
+
+    shutil.copytree(source_assets, target_assets)
+    print("Assets copied to public/assets")
+
+
 def main():
     ensure_dir("public")
 
@@ -216,6 +232,7 @@ def main():
     build_chronicles()
     build_guides()
     build_tools()
+    copy_assets()
 
     print("Build complete.")
 
