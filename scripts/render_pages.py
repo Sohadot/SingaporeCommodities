@@ -69,48 +69,48 @@ class PageRenderer:
         return pages
 
     def render_error_pages(
-    self,
-    site_data: Dict[str, Any],
-    navigation: Dict[str, Any],
-    environment: str
-) -> None:
-    errors = [
-        {
-            "code": 404,
-            "title": "Page Not Found",
-            "message": "The page you requested could not be found.",
-        },
-        {
-            "code": 500,
-            "title": "Internal Server Error",
-            "message": "An internal server error occurred.",
-        },
-    ]
-
-    for error in errors:
-        context = {
-            "site": site_data,
-            "navigation": navigation,
-            "environment": environment,
-            "is_production": environment == "production",
-            "page": {
-                "title": f"{error['code']}",
-                "description": error["message"],
-                "canonical": f"{site_data['url'].rstrip('/')}/{error['code']}.html",
-                "slug": str(error["code"]),
-                "is_home": False,
-                "url_path": f"/{error['code']}.html",
-                "schema": "",
-                "content": {},
+        self,
+        site_data: Dict[str, Any],
+        navigation: Dict[str, Any],
+        environment: str,
+    ) -> None:
+        errors = [
+            {
+                "code": 404,
+                "title": "Page Not Found",
+                "message": "The page you requested could not be found.",
             },
-            "error": error,
-        }
+            {
+                "code": 500,
+                "title": "Internal Server Error",
+                "message": "An internal server error occurred.",
+            },
+        ]
 
-        self._render_template_to_path(
-            template_name="error.html",
-            output_path=self.dist_dir / f"{error['code']}.html",
-            context=context,
-        )
+        for error in errors:
+            context = {
+                "site": site_data,
+                "navigation": navigation,
+                "environment": environment,
+                "is_production": environment == "production",
+                "page": {
+                    "title": f"{error['code']}",
+                    "description": error["message"],
+                    "canonical": f"{site_data['url'].rstrip('/')}/{error['code']}.html",
+                    "slug": str(error["code"]),
+                    "is_home": False,
+                    "url_path": f"/{error['code']}.html",
+                    "schema": "",
+                    "content": {},
+                },
+                "error": error,
+            }
+
+            self._render_template_to_path(
+                template_name="error.html",
+                output_path=self.dist_dir / f"{error['code']}.html",
+                context=context,
+            )
 
     def _resolve_output_path(self, url_path: str) -> Path:
         if url_path == "/":
