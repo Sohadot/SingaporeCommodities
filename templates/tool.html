@@ -1,41 +1,173 @@
-<section class="hero">
-  <div class="container">
-    <p class="eyebrow">Strategic Tool</p>
-    <h1>{{ title }}</h1>
-    <p class="lead">{{ description }}</p>
+{% extends "base.html" %}
+
+{% block body_class %}tool-body{% endblock %}
+
+{% block content %}
+<section class="content-hero content-hero-tool" aria-labelledby="tool-title">
+  <div class="shell content-hero-grid">
+    <div class="content-hero-copy">
+      <p class="eyebrow">
+        {% if page.content and page.content.eyebrow %}
+          {{ page.content.eyebrow }}
+        {% else %}
+          Strategic Tool
+        {% endif %}
+      </p>
+
+      <h1 id="tool-title" class="content-title">
+        {% if page.content and page.content.headline %}
+          {{ page.content.headline }}
+        {% else %}
+          {{ page.title }}
+        {% endif %}
+      </h1>
+
+      <p class="lead content-lead">
+        {% if page.content and page.content.intro %}
+          {{ page.content.intro }}
+        {% else %}
+          {{ page.description }}
+        {% endif %}
+      </p>
+    </div>
+
+    <aside class="content-sidepanel" aria-label="Tool profile">
+      <article class="context-card">
+        <p class="context-kicker">Type</p>
+        <p class="context-value">Interpretive interface</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">Mode</p>
+        <p class="context-value">Analytical assistance</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">Future role</p>
+        <p class="context-value">Dynamic strategic instrumentation</p>
+      </article>
+    </aside>
   </div>
 </section>
 
-<section class="section">
-  <div class="container narrow prose">
-    <p>
-      This tool is designed as an interpretive layer for understanding how
-      Singapore functions as a commodity control node.
-    </p>
+{% if page.content and page.content.highlights %}
+<section class="section-block section-block-surface" aria-labelledby="tool-highlights-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Tool Capabilities</p>
+      <h2 id="tool-highlights-title" class="section-title">Core interpretive functions</h2>
+    </div>
 
-    <label for="commodity">Commodity</label>
-    <select id="commodity">
-      <option value="lng">LNG</option>
-      <option value="oil">Oil</option>
-      <option value="bunkering-fuel">Bunkering Fuel</option>
-      <option value="palm-oil">Palm Oil</option>
-      <option value="metals">Metals</option>
-    </select>
-
-    <label for="function">Function</label>
-    <select id="function">
-      <option value="routing">Routing</option>
-      <option value="coordination">Coordination</option>
-      <option value="bunkering">Bunkering</option>
-      <option value="stabilization">Stabilization</option>
-    </select>
-
-    <button id="analyze-button" type="button">Analyze</button>
-
-    <div id="tool-result" class="tool-result">
-      Select a commodity and function to generate an interpretive output.
+    <div class="card-grid card-grid-2">
+      {% for highlight in page.content.highlights %}
+      <article class="editorial-card">
+        <div class="editorial-card-top">
+          <p class="editorial-index">{{ "%02d"|format(loop.index) }}</p>
+          <h3 class="editorial-title">{{ highlight }}</h3>
+        </div>
+      </article>
+      {% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
 
-<script src="{{ site.base_url }}/assets/js/flow-explorer.js"></script>
+<section class="section-block" aria-labelledby="tool-interface-title">
+  <div class="shell tool-layout">
+    <article class="tool-interface">
+      <div class="section-heading section-heading-inline">
+        <p class="section-kicker">Tool Interface</p>
+        <h2 id="tool-interface-title" class="section-title">Operational surface</h2>
+      </div>
+
+      <div class="tool-panel">
+        <div class="tool-field">
+          <label for="tool-commodity" class="tool-label">Commodity</label>
+          <select id="tool-commodity" class="tool-control">
+            <option value="lng">LNG</option>
+            <option value="oil">Oil</option>
+            <option value="bunkering">Bunkering Fuel</option>
+            <option value="metals">Metals</option>
+            <option value="agriculture">Agriculture</option>
+          </select>
+        </div>
+
+        <div class="tool-field">
+          <label for="tool-function" class="tool-label">Interpretive Function</label>
+          <select id="tool-function" class="tool-control">
+            <option value="routing">Routing</option>
+            <option value="coordination">Coordination</option>
+            <option value="stabilization">Stabilization</option>
+            <option value="strategic-relevance">Strategic Relevance</option>
+          </select>
+        </div>
+
+        <div class="tool-actions">
+          <button type="button" class="button button-primary" id="tool-analyze-button">Analyze</button>
+        </div>
+
+        <div class="tool-result" id="tool-result" aria-live="polite">
+          Select a commodity and an interpretive function to generate a structured analytical prompt surface.
+        </div>
+      </div>
+    </article>
+
+    <aside class="content-rail" aria-label="Tool guidance">
+      {% if page.content and page.content.summary %}
+      <article class="detail-card">
+        <h3 class="detail-title">Tool summary</h3>
+        <p class="detail-value detail-value-body">{{ page.content.summary }}</p>
+      </article>
+      {% endif %}
+
+      <article class="detail-card">
+        <h3 class="detail-title">Current state</h3>
+        <p class="detail-value">Reference-grade interface</p>
+      </article>
+
+      <article class="detail-card">
+        <h3 class="detail-title">Target evolution</h3>
+        <p class="detail-value">Dynamic market-linked tooling</p>
+      </article>
+    </aside>
+  </div>
+</section>
+
+{% if page.content and page.content.sections %}
+<section class="section-block section-block-surface" aria-labelledby="tool-sections-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Methodology</p>
+      <h2 id="tool-sections-title" class="section-title">Interpretive logic behind the tool</h2>
+    </div>
+
+    <div class="structured-sections">
+      {% for section in page.content.sections %}
+      <article class="structured-section">
+        <div class="structured-section-header">
+          <p class="editorial-index">{{ "%02d"|format(loop.index) }}</p>
+          <h3 class="structured-section-title">{{ section.heading }}</h3>
+        </div>
+        <div class="structured-section-body">
+          <p>{{ section.body }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if page.content and page.content.body %}
+<section class="section-block" aria-labelledby="tool-body-title">
+  <div class="shell narrow-shell">
+    <div class="section-heading">
+      <p class="section-kicker">Extended Reference</p>
+      <h2 id="tool-body-title" class="section-title">Tool documentation</h2>
+    </div>
+
+    <div class="page-content prose prose-tool">
+      {{ page.content.body | safe }}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
