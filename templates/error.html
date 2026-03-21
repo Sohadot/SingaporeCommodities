@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block body_class %}error-body{% endblock %}
+
+{% block content %}
+<section class="error-shell" aria-labelledby="error-title">
+  <div class="shell">
+    <div class="error-panel">
+      <p class="eyebrow">System Response</p>
+      <h1 class="error-code">{{ error.code }}</h1>
+      <h2 id="error-title" class="error-title">{{ error.title }}</h2>
+      <p class="lead error-message">{{ error.message }}</p>
+
+      <div class="error-actions">
+        <a href="/" class="button button-primary">Return to Home</a>
+        <a href="/framework/" class="button button-secondary">Open Framework</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
