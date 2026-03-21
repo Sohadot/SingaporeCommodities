@@ -55,7 +55,7 @@ jobs:
 
       - name: Build site
         run: |
-          python build.py \
+          python -m scripts.build \
             --env "${{ steps.build_env.outputs.environment }}" \
             --version "${{ github.sha }}"
 
