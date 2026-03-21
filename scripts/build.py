@@ -121,6 +121,16 @@ class BuildSystem:
         # Preview builds remain noindex via templates/robots, not via domain mutation.
         return prepared
 
+    def copy_headers(self) -> None:
+        src = self.static_dir / "_headers"
+        dst = self.dist_dir / "_headers"
+
+        if src.exists():
+            shutil.copy2(src, dst)
+            self.logger.info("Copied _headers to dist/")
+        else:
+            self.logger.warning("_headers file not found in static/")
+
     # ------------------------------------------------------------------
     # Build execution
     # ------------------------------------------------------------------
@@ -169,6 +179,8 @@ class BuildSystem:
             SitemapGenerator(self.dist_dir, site_data, self.logger).generate(generated_pages)
             RobotsGenerator(self.dist_dir, site_data, self.is_production, self.logger).generate()
             RSSGenerator(self.dist_dir, site_data, self.logger).generate(generated_pages)
+
+            self.copy_headers()
 
             self._generate_manifest(
                 pages=generated_pages,
