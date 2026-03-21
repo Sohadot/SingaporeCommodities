@@ -76,19 +76,6 @@ class ContentLoader:
         },
     }
 
-    # FIX 1: Extensions defined once as a class-level constant.
-    # _render_markdown now creates a fresh Markdown instance per call,
-    # which guarantees correct TOC state and avoids stale extension state
-    # between documents (md_lib.Markdown.reset() does not fully reset
-    # the toc extension in all library versions).
-    _MARKDOWN_EXTENSIONS: List[str] = [
-        "extra",
-        "tables",
-        "fenced_code",
-        "toc",
-        "sane_lists",
-    ]
-
     def __init__(self, data_dir: Path, logger: Logger) -> None:
         self.data_dir = Path(data_dir)
         self.logger = logger
@@ -156,28 +143,20 @@ class ContentLoader:
             "footer": self._validate_nav_items(footer, "footer"),
         }
 
-    def _validate_nav_items(
-        self, items: List[Dict[str, Any]], bucket: str
-    ) -> List[Dict[str, Any]]:
+    def _validate_nav_items(self, items: List[Dict[str, Any]], bucket: str) -> List[Dict[str, Any]]:
         validated: List[Dict[str, Any]] = []
 
         for index, item in enumerate(items):
             if not isinstance(item, dict):
-                raise BuildError(
-                    f"navigation.json {bucket}[{index}] must be an object"
-                )
+                raise BuildError(f"navigation.json {bucket}[{index}] must be an object")
 
             title = item.get("title")
             url = item.get("url")
 
             if not isinstance(title, str) or not title.strip():
-                raise BuildError(
-                    f"navigation.json {bucket}[{index}] missing valid title"
-                )
+                raise BuildError(f"navigation.json {bucket}[{index}] missing valid title")
             if not isinstance(url, str) or not url.strip():
-                raise BuildError(
-                    f"navigation.json {bucket}[{index}] missing valid url"
-                )
+                raise BuildError(f"navigation.json {bucket}[{index}] missing valid url")
 
             validated.append(
                 {
@@ -210,23 +189,12 @@ class ContentLoader:
                   "tools": [...]
               }
             }
-
-        Note on subdirectory behaviour:
-            _load_markdown_collection uses rglob("*.md"), which descends into
-            subdirectories. This is intentional — nested organisation is supported.
-            Any file you do not want published must be excluded by prefixing its
-            name with an underscore (e.g. _draft.md), which is filtered out below.
         """
         if not self.content_dir.exists():
             raise BuildError(f"Content directory missing: {self.content_dir}")
 
         collections: Dict[str, List[Dict[str, Any]]] = {
-            "pages": [],
-            "articles": [],
-            "chronicles": [],
-            "cities": [],
-            "guides": [],
-            "tools": [],
+            key: [] for key in self.COLLECTIONS
         }
 
         seen_paths: set[str] = set()
@@ -253,18 +221,14 @@ class ContentLoader:
         if home_node is None:
             home_node = self._build_synthetic_home_node()
 
-        collections["pages"] = [
-            node for node in collections["pages"] if node["slug"] != "home"
-        ]
+        collections["pages"] = [node for node in collections["pages"] if node["slug"] != "home"]
 
         return {
             "home": home_node,
             "collections": collections,
         }
 
-    def _extract_home_node(
-        self, pages: List[Dict[str, Any]]
-    ) -> Optional[Dict[str, Any]]:
+    def _extract_home_node(self, pages: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
         for node in pages:
             if node["slug"] == "home":
                 return {
@@ -278,7 +242,7 @@ class ContentLoader:
 
     def _build_synthetic_home_node(self) -> Dict[str, Any]:
         self.logger.warning(
-            "content/pages/home.md not found; generating synthetic home node"
+            "content/pages/home.md not found; generating synthetic home node as an exceptional fallback"
         )
 
         return {
@@ -300,10 +264,7 @@ class ContentLoader:
             "content": {
                 "eyebrow": "Strategic Platform",
                 "headline": "Singapore Commodities",
-                "intro": (
-                    "A sovereign-grade interface for commodity systems, "
-                    "infrastructure, and strategic interpretation."
-                ),
+                "intro": "A sovereign-grade interface for commodity systems, infrastructure, and strategic interpretation.",
                 "highlights": [],
                 "sections": [],
                 "summary": "",
@@ -323,14 +284,11 @@ class ContentLoader:
     ) -> List[Dict[str, Any]]:
         nodes: List[Dict[str, Any]] = []
 
-        # FIX 2: Files whose name starts with underscore are treated as drafts
-        # and excluded from the build. rglob descends into all subdirectories
-        # intentionally — see load_content_map docstring.
         markdown_files = sorted(
-            f for f in section_dir.rglob("*.md")
-            if not f.name.startswith("_")
+            path
+            for path in section_dir.rglob("*.md")
+            if not path.name.startswith("_")
         )
-
         if not markdown_files:
             return nodes
 
@@ -385,9 +343,7 @@ class ContentLoader:
         )
 
         url_path = self._resolve_url_path(section_key, slug, route_prefix)
-        template_name = self._resolve_template(
-            frontmatter, default_template, section_key, slug
-        )
+        template_name = self._resolve_template(frontmatter, default_template, section_key, slug)
 
         node: Dict[str, Any] = {
             "slug": slug,
@@ -403,21 +359,39 @@ class ContentLoader:
             "order": int(frontmatter.get("order", 0) or 0),
             "date": frontmatter.get("date"),
             "updated_at": frontmatter.get("updated_at"),
-            "tags": (
-                frontmatter.get("tags", [])
-                if isinstance(frontmatter.get("tags"), list)
-                else []
-            ),
+            "tags": self._normalize_string_list(frontmatter.get("tags"), field_name="tags", path=path),
             "schema_type": frontmatter.get("schema_type", schema_type),
             "content": content_payload,
         }
 
         if content_type == "tool":
-            node["tool_type"] = frontmatter.get("tool_type", "reference")
-            node["update_mode"] = frontmatter.get("update_mode", "manual")
-            node["data_sources"] = frontmatter.get("data_sources", [])
-            node["market_scope"] = frontmatter.get("market_scope", [])
-            node["geostrategic_scope"] = frontmatter.get("geostrategic_scope", [])
+            node["tool_type"] = self._normalize_string_value(
+                frontmatter.get("tool_type", "reference"),
+                field_name="tool_type",
+                path=path,
+                default="reference",
+            )
+            node["update_mode"] = self._normalize_string_value(
+                frontmatter.get("update_mode", "manual"),
+                field_name="update_mode",
+                path=path,
+                default="manual",
+            )
+            node["data_sources"] = self._normalize_string_list(
+                frontmatter.get("data_sources"),
+                field_name="data_sources",
+                path=path,
+            )
+            node["market_scope"] = self._normalize_string_list(
+                frontmatter.get("market_scope"),
+                field_name="market_scope",
+                path=path,
+            )
+            node["geostrategic_scope"] = self._normalize_string_list(
+                frontmatter.get("geostrategic_scope"),
+                field_name="geostrategic_scope",
+                path=path,
+            )
 
         return node
 
@@ -444,9 +418,7 @@ class ContentLoader:
 
         return frontmatter, body.lstrip("\n")
 
-    def _resolve_slug(
-        self, path: Path, frontmatter: Dict[str, Any], section_key: str
-    ) -> str:
+    def _resolve_slug(self, path: Path, frontmatter: Dict[str, Any], section_key: str) -> str:
         raw_slug = frontmatter.get("slug")
         if isinstance(raw_slug, str) and raw_slug.strip():
             slug = raw_slug.strip().strip("/")
@@ -456,22 +428,14 @@ class ContentLoader:
         if not slug:
             raise BuildError(f"Invalid empty slug for content file: {path}")
 
-        # FIX 3: Nested slugs (e.g. "energy/crude-oil") are supported at the
-        # slug resolution level. _resolve_url_path will incorporate them
-        # correctly. Templates and routing are flat by design — if nested
-        # routing is needed in the future, extend _resolve_url_path only.
         if section_key == "pages" and slug == "index":
             slug = "home"
 
+        # Nested slugs such as "energy/crude-oil" are supported intentionally.
         return slug
 
-    def _resolve_title(
-        self, frontmatter: Dict[str, Any], markdown_body: str, slug: str
-    ) -> str:
-        if (
-            isinstance(frontmatter.get("title"), str)
-            and frontmatter["title"].strip()
-        ):
+    def _resolve_title(self, frontmatter: Dict[str, Any], markdown_body: str, slug: str) -> str:
+        if isinstance(frontmatter.get("title"), str) and frontmatter["title"].strip():
             return frontmatter["title"].strip()
 
         match = re.search(r"^\s*#\s+(.+?)\s*$", markdown_body, flags=re.MULTILINE)
@@ -486,10 +450,7 @@ class ContentLoader:
         markdown_body: str,
         title: str,
     ) -> str:
-        if (
-            isinstance(frontmatter.get("description"), str)
-            and frontmatter["description"].strip()
-        ):
+        if isinstance(frontmatter.get("description"), str) and frontmatter["description"].strip():
             return frontmatter["description"].strip()
 
         first_paragraph = self._extract_first_paragraph(markdown_body)
@@ -554,21 +515,15 @@ class ContentLoader:
         if isinstance(sections, list):
             for index, section in enumerate(sections):
                 if not isinstance(section, dict):
-                    raise BuildError(
-                        f"Section {index} must be an object in {path}"
-                    )
+                    raise BuildError(f"Section {index} must be an object in {path}")
 
                 heading = section.get("heading")
                 body = section.get("body")
 
                 if not isinstance(heading, str) or not heading.strip():
-                    raise BuildError(
-                        f"Section {index} missing heading in {path}"
-                    )
+                    raise BuildError(f"Section {index} missing heading in {path}")
                 if not isinstance(body, str) or not body.strip():
-                    raise BuildError(
-                        f"Section {index} missing body in {path}"
-                    )
+                    raise BuildError(f"Section {index} missing body in {path}")
 
                 normalized_sections.append(
                     {
@@ -591,9 +546,7 @@ class ContentLoader:
             "body": html_body,
         }
 
-    def _resolve_url_path(
-        self, section_key: str, slug: str, route_prefix: str
-    ) -> str:
+    def _resolve_url_path(self, section_key: str, slug: str, route_prefix: str) -> str:
         if section_key == "pages":
             if slug == "home":
                 return "/"
@@ -602,11 +555,16 @@ class ContentLoader:
         return f"{route_prefix}/{slug}/"
 
     def _render_markdown(self, markdown_body: str) -> str:
-        # FIX 1: Fresh instance per call. Avoids stale TOC state and any
-        # extension side-effects that md_lib.Markdown.reset() does not
-        # fully clear across all supported library versions.
-        processor = md_lib.Markdown(extensions=self._MARKDOWN_EXTENSIONS)
-        return processor.convert(markdown_body)
+        markdown = md_lib.Markdown(
+            extensions=[
+                "extra",
+                "tables",
+                "fenced_code",
+                "toc",
+                "sane_lists",
+            ]
+        )
+        return markdown.convert(markdown_body)
 
     def _extract_first_paragraph(self, markdown_body: str) -> str:
         cleaned = markdown_body.strip()
@@ -633,6 +591,39 @@ class ContentLoader:
                 return candidate
 
         return ""
+
+    def _normalize_string_list(
+        self,
+        value: Any,
+        field_name: str,
+        path: Path,
+    ) -> List[str]:
+        if value is None:
+            return []
+        if not isinstance(value, list):
+            raise BuildError(f"'{field_name}' must be a list in {path}")
+
+        normalized: List[str] = []
+        for index, item in enumerate(value):
+            if not isinstance(item, str) or not item.strip():
+                raise BuildError(
+                    f"'{field_name}[{index}]' must be a non-empty string in {path}"
+                )
+            normalized.append(item.strip())
+        return normalized
+
+    def _normalize_string_value(
+        self,
+        value: Any,
+        field_name: str,
+        path: Path,
+        default: str,
+    ) -> str:
+        if value is None:
+            return default
+        if not isinstance(value, str) or not value.strip():
+            raise BuildError(f"'{field_name}' must be a non-empty string in {path}")
+        return value.strip()
 
     def _humanize_slug(self, slug: str) -> str:
         return re.sub(r"[-_]+", " ", slug).strip().title()
