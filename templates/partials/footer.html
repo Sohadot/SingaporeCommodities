@@ -1,0 +1,47 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="shell footer-grid">
+    <div class="footer-brand">
+      <a class="brandmark brandmark-footer" href="/" aria-label="{{ site.name }} home">
+        {% if site.logo %}
+        <img class="brandmark-image" src="{{ site.logo }}" alt="" width="36" height="36">
+        {% endif %}
+        <span class="brandmark-text">{{ site.name }}</span>
+      </a>
+
+      <p class="footer-copy">
+        {{ site.description }}
+      </p>
+    </div>
+
+    <div class="footer-column">
+      <h2 class="footer-heading">Navigation</h2>
+      <ul class="footer-list">
+        {% for item in navigation.main %}
+        <li>
+          <a class="footer-link" href="{{ item.url }}">{{ item.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h2 class="footer-heading">Contact</h2>
+      <ul class="footer-list">
+        {% if site.contact and site.contact.email %}
+        <li><a class="footer-link" href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></li>
+        {% endif %}
+        {% if site.contact and site.contact.phone %}
+        <li><a class="footer-link" href="tel:{{ site.contact.phone | replace(' ', '') }}">{{ site.contact.phone }}</a></li>
+        {% endif %}
+        {% if site.contact and site.contact.address %}
+        <li><span class="footer-static">{{ site.contact.address }}</span></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="shell footer-lower">
+    <p class="footer-meta">© {{ now().year }} {{ site.name }}. All rights reserved.</p>
+    <p class="footer-meta">Version {{ site.version }}</p>
+  </div>
+</footer>
