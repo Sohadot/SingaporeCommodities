@@ -1,0 +1,61 @@
+{
+  "main": [
+    {
+      "title": "Home",
+      "url": "/",
+      "position": 1
+    },
+    {
+      "title": "Manifesto",
+      "url": "/manifesto/",
+      "position": 10
+    },
+    {
+      "title": "Framework",
+      "url": "/framework/",
+      "position": 20
+    },
+    {
+      "title": "Articles",
+      "url": "/articles/",
+      "position": 30
+    },
+    {
+      "title": "Chronicles",
+      "url": "/chronicles/",
+      "position": 40
+    },
+    {
+      "title": "Guide",
+      "url": "/guide/",
+      "position": 50
+    },
+    {
+      "title": "Tools",
+      "url": "/tools/",
+      "position": 60
+    }
+  ],
+  "footer": [
+    {
+      "title": "About",
+      "url": "/about/",
+      "position": 10
+    },
+    {
+      "title": "Privacy Policy",
+      "url": "/privacy/",
+      "position": 20
+    },
+    {
+      "title": "Terms of Service",
+      "url": "/terms/",
+      "position": 30
+    },
+    {
+      "title": "Contact",
+      "url": "/contact/",
+      "position": 40
+    }
+  ]
+}
