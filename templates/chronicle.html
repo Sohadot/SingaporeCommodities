@@ -1,9 +1,106 @@
-<article class="chronicle">
-  <div class="container narrow">
-    <h1>{{ title }}</h1>
-    <p class="chronicle-meta">Chronicle Entry</p>
-    <div class="prose">
-      {{ content | safe }}
+{% extends "base.html" %}
+
+{% block body_class %}chronicle-body{% endblock %}
+
+{% block content %}
+<section class="content-hero content-hero-chronicle" aria-labelledby="chronicle-title">
+  <div class="shell content-hero-grid">
+    <div class="content-hero-copy">
+      <p class="eyebrow">
+        {% if page.content and page.content.eyebrow %}
+          {{ page.content.eyebrow }}
+        {% else %}
+          Chronicle
+        {% endif %}
+      </p>
+
+      <h1 id="chronicle-title" class="content-title">
+        {% if page.content and page.content.headline %}
+          {{ page.content.headline }}
+        {% else %}
+          {{ page.title }}
+        {% endif %}
+      </h1>
+
+      <p class="lead content-lead">
+        {% if page.content and page.content.intro %}
+          {{ page.content.intro }}
+        {% else %}
+          {{ page.description }}
+        {% endif %}
+      </p>
+    </div>
+
+    <aside class="content-sidepanel" aria-label="Chronicle context">
+      <article class="context-card">
+        <p class="context-kicker">Format</p>
+        <p class="context-value">Strategic dispatch</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">Function</p>
+        <p class="context-value">Signal preservation</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">Use</p>
+        <p class="context-value">Time-sensitive interpretation</p>
+      </article>
+    </aside>
+  </div>
+</section>
+
+{% if page.content and page.content.highlights %}
+<section class="section-block section-block-surface" aria-labelledby="chronicle-signals-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Strategic Signals</p>
+      <h2 id="chronicle-signals-title" class="section-title">Immediate readings</h2>
+    </div>
+
+    <div class="card-grid card-grid-2">
+      {% for highlight in page.content.highlights %}
+      <article class="editorial-card editorial-card-compact">
+        <div class="editorial-card-top">
+          <p class="editorial-index">{{ "%02d"|format(loop.index) }}</p>
+          <h3 class="editorial-title">{{ highlight }}</h3>
+        </div>
+      </article>
+      {% endfor %}
     </div>
   </div>
-</article>
+</section>
+{% endif %}
+
+<section class="section-block" aria-labelledby="chronicle-body-title">
+  <div class="shell chronicle-layout">
+    <article class="content-main">
+      <div class="section-heading section-heading-inline">
+        <p class="section-kicker">Chronicle Entry</p>
+        <h2 id="chronicle-body-title" class="section-title">Recorded movement</h2>
+      </div>
+
+      <div class="page-content prose prose-chronicle">
+        {{ page.content.body | safe }}
+      </div>
+    </article>
+
+    <aside class="content-rail" aria-label="Chronicle notes">
+      {% if page.content and page.content.summary %}
+      <article class="detail-card">
+        <h3 class="detail-title">Summary signal</h3>
+        <p class="detail-value detail-value-body">{{ page.content.summary }}</p>
+      </article>
+      {% endif %}
+
+      <article class="detail-card">
+        <h3 class="detail-title">Interpretive mode</h3>
+        <p class="detail-value">Chronological intelligence</p>
+      </article>
+
+      <article class="detail-card">
+        <h3 class="detail-title">Canonical</h3>
+        <p class="detail-value detail-value-small">{{ page.canonical }}</p>
+      </article>
+    </aside>
+  </div>
+</section>
+{% endblock %}
