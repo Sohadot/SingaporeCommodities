@@ -1,3 +1,19 @@
+/*
+  SingaporeCommodities.com — main.css
+  ─────────────────────────────────────────────────────────────
+  CHANGES FROM PREVIOUS VERSION:
+  1. --font-sans → Barlow (loaded via Google Fonts) replacing Inter
+  2. --font-serif → "Cormorant Garamond" (loaded via Google Fonts)
+     replacing "Iowan Old Style" which exists only on Apple devices
+  3. .narrow-shell → added margin-inline: auto (was missing)
+  ─────────────────────────────────────────────────────────────
+  Required <link> tags in <head> (replace any previous font links):
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+*/
+
 :root {
   --color-background: #05070d;
   --color-background-elevated: #081123;
@@ -17,8 +33,12 @@
   --color-danger: #c85c5c;
   --color-success: #6ea87f;
 
-  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  /* FIX 1: Barlow replaces Inter — more distinctive, still highly legible */
+  --font-sans: "Barlow", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* FIX 2: Cormorant Garamond replaces Iowan Old Style — web font, cross-platform */
+  --font-serif: "Cormorant Garamond", "Palatino Linotype", Georgia, serif;
+
   --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 
   --shell: 1320px;
@@ -189,8 +209,10 @@ samp {
   margin-inline: auto;
 }
 
+/* FIX 3: added margin-inline: auto — was missing, causing off-center layout */
 .narrow-shell {
   width: min(100%, var(--shell-narrow));
+  margin-inline: auto;
 }
 
 .site-main {
