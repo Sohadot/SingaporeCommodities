@@ -154,8 +154,11 @@ class BuildSystem:
                 environment=self.environment,
                 schema_generator=self.schema_generator,
             )
-
-            self.renderer.render_error_pages(site_data=site_data, environment=self.environment)
+            self.renderer.render_error_pages(
+                site_data=site_data,
+                navigation=navigation,
+                environment=self.environment,
+            )
 
             self._validate_generated_pages_against_contract(
                 generated_pages=generated_pages,
