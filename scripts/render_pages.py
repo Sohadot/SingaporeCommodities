@@ -1,3 +1,4 @@
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -20,6 +21,7 @@ class PageRenderer:
             trim_blocks=True,
             lstrip_blocks=True,
         )
+        self.env.globals["now"] = datetime.utcnow
 
     def render_all(
         self,
