@@ -1,8 +1,126 @@
-<article class="guide">
-  <div class="container narrow">
-    <h1>{{ title }}</h1>
-    <div class="prose">
-      {{ content | safe }}
+{% extends "base.html" %}
+
+{% block body_class %}guide-body{% endblock %}
+
+{% block content %}
+<section class="content-hero content-hero-guide" aria-labelledby="guide-title">
+  <div class="shell content-hero-grid">
+    <div class="content-hero-copy">
+      <p class="eyebrow">
+        {% if page.content and page.content.eyebrow %}
+          {{ page.content.eyebrow }}
+        {% else %}
+          Guide
+        {% endif %}
+      </p>
+
+      <h1 id="guide-title" class="content-title">
+        {% if page.content and page.content.headline %}
+          {{ page.content.headline }}
+        {% else %}
+          {{ page.title }}
+        {% endif %}
+      </h1>
+
+      <p class="lead content-lead">
+        {% if page.content and page.content.intro %}
+          {{ page.content.intro }}
+        {% else %}
+          {{ page.description }}
+        {% endif %}
+      </p>
+    </div>
+
+    <aside class="content-sidepanel" aria-label="Guide context">
+      <article class="context-card">
+        <p class="context-kicker">Format</p>
+        <p class="context-value">Reference guide</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">Audience</p>
+        <p class="context-value">Students, researchers, readers</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">Purpose</p>
+        <p class="context-value">Structured understanding</p>
+      </article>
+    </aside>
+  </div>
+</section>
+
+{% if page.content and page.content.highlights %}
+<section class="section-block section-block-surface" aria-labelledby="guide-highlights-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Guide Points</p>
+      <h2 id="guide-highlights-title" class="section-title">Essential concepts</h2>
+    </div>
+
+    <div class="card-grid card-grid-2">
+      {% for highlight in page.content.highlights %}
+      <article class="editorial-card editorial-card-compact">
+        <div class="editorial-card-top">
+          <p class="editorial-index">{{ "%02d"|format(loop.index) }}</p>
+          <h3 class="editorial-title">{{ highlight }}</h3>
+        </div>
+      </article>
+      {% endfor %}
     </div>
   </div>
-</article>
+</section>
+{% endif %}
+
+{% if page.content and page.content.sections %}
+<section class="section-block" aria-labelledby="guide-sections-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Learning Structure</p>
+      <h2 id="guide-sections-title" class="section-title">Core teaching blocks</h2>
+    </div>
+
+    <div class="structured-sections">
+      {% for section in page.content.sections %}
+      <article class="structured-section">
+        <div class="structured-section-header">
+          <p class="editorial-index">{{ "%02d"|format(loop.index) }}</p>
+          <h3 class="structured-section-title">{{ section.heading }}</h3>
+        </div>
+        <div class="structured-section-body">
+          <p>{{ section.body }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section-block" aria-labelledby="guide-body-title">
+  <div class="shell guide-layout">
+    <article class="content-main">
+      <div class="section-heading section-heading-inline">
+        <p class="section-kicker">Guide Body</p>
+        <h2 id="guide-body-title" class="section-title">Extended explanation</h2>
+      </div>
+
+      <div class="page-content prose prose-guide">
+        {{ page.content.body | safe }}
+      </div>
+    </article>
+
+    <aside class="content-rail" aria-label="Guide notes">
+      {% if page.content and page.content.summary %}
+      <article class="detail-card">
+        <h3 class="detail-title">Learning summary</h3>
+        <p class="detail-value detail-value-body">{{ page.content.summary }}</p>
+      </article>
+      {% endif %}
+
+      <article class="detail-card">
+        <h3 class="detail-title">Reading mode</h3>
+        <p class="detail-value">Reference and teaching</p>
+      </article>
+    </aside>
+  </div>
+</section>
+{% endblock %}
