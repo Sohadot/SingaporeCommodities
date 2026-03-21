@@ -1,65 +1,22 @@
 {
-  "site_name": "SingaporeCommodities.com",
-  "short_name": "Singapore Commodities",
-  "domain": "singaporecommodities.com",
-  "base_url": "https://singaporecommodities.com",
+  "name": "Singapore Commodities",
+  "url": "https://singaporecommodities.com",
+  "description": "A sovereign-grade reference platform interpreting Singapore’s role in commodity power through maritime systems, energy transition, trade coordination, finance, logistics, and strategic intelligence.",
   "language": "en",
-  "languages": ["en", "fr", "ar"],
-  "default_language": "en",
-  "tagline": "Strategic Commodity Intelligence Node",
-  "description": "Singapore Commodities is a strategic intelligence platform examining Singapore as a maritime commodity control node through LNG, bunkering, routing, logistics, and trade coordination.",
-  "theme_color": "#0b1220",
-  "repository_name": "singaporecommodities",
-  "brand_positioning": "A sovereign digital reference asset built around Singapore's role in the architecture of global commodity movement.",
-  "navigation": [
-    {
-      "label": "Manifesto",
-      "href": "/manifesto/"
-    },
-    {
-      "label": "Framework",
-      "href": "/framework/"
-    },
-    {
-      "label": "Tools",
-      "href": "/tools/"
-    },
-    {
-      "label": "Articles",
-      "href": "/articles/"
-    },
-    {
-      "label": "Chronicles",
-      "href": "/chronicles/"
-    },
-    {
-      "label": "Guide",
-      "href": "/guide/"
-    },
-    {
-      "label": "About",
-      "href": "/about/"
-    },
-    {
-      "label": "Join",
-      "href": "/join/"
-    }
+  "charset": "UTF-8",
+  "author": "Singapore Commodities Platform",
+  "logo": "/assets/images/logo.svg",
+  "favicon": "/assets/images/favicon.svg",
+  "theme_color": "#05070D",
+  "social_links": [
+    "https://www.linkedin.com/company/singapore-commodities",
+    "https://twitter.com/sgcommodities"
   ],
-  "security": {
-    "static_first": true,
-    "csp_enabled": true,
-    "external_scripts_default": false,
-    "forms_protected": true
+  "contact": {
+    "email": "info@singaporecommodities.com",
+    "phone": "+65 6123 4567",
+    "address": "Singapore"
   },
-  "seo": {
-    "programmatic_ready": true,
-    "multilingual_ready": true,
-    "default_robots": "index,follow",
-    "sitemap_enabled": true,
-    "rss_enabled": true
-  },
-  "analytics": {
-    "gtm_id": "",
-    "ga4_id": ""
-  }
+  "analytics_id": null,
+  "version": "1.0.0"
 }
