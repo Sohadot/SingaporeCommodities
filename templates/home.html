@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block body_class %}is-home{% endblock %}
+
+{% block content %}
+<section class="hero hero-home" aria-labelledby="hero-title">
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Sovereign Commodity Intelligence</p>
+      <h1 id="hero-title" class="display-title">
+        {{ page.content.headline if page.content and page.content.headline else site.name }}
+      </h1>
+
+      <p class="lead hero-lead">
+        {% if page.content and page.content.intro %}
+          {{ page.content.intro }}
+        {% else %}
+          {{ page.description }}
+        {% endif %}
+      </p>
+
+      <div class="hero-actions">
+        <a href="/framework/" class="button button-primary">Enter the Framework</a>
+        <a href="/articles/" class="button button-secondary">Read the Analysis</a>
+      </div>
+    </div>
+
+    <aside class="hero-panel" aria-label="Institutional overview">
+      <div class="hero-panel-header">
+        <span class="panel-kicker">Node Position</span>
+        <span class="panel-status">Live</span>
+      </div>
+
+      <dl class="signal-list">
+        <div class="signal-item">
+          <dt>Domain</dt>
+          <dd>Singapore & Commodity Power</dd>
+        </div>
+        <div class="signal-item">
+          <dt>Function</dt>
+          <dd>Maritime, energy, finance, intelligence</dd>
+        </div>
+        <div class="signal-item">
+          <dt>Use Case</dt>
+          <dd>Reference-grade strategic interpretation</dd>
+        </div>
+        <div class="signal-item">
+          <dt>Audience</dt>
+          <dd>Researchers, students, analysts, institutions</dd>
+        </div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<section class="section-block section-block-tight" aria-labelledby="thesis-title">
+  <div class="shell section-grid section-grid-wide">
+    <div class="section-heading">
+      <p class="section-kicker">Core Thesis</p>
+      <h2 id="thesis-title" class="section-title">Singapore as a coordination node, not merely a trade location</h2>
+    </div>
+
+    <div class="body-copy body-copy-large">
+      <p>
+        Singapore is not framed here as a generic business hub. It is interpreted as a strategic interface where commodity movement is organized, stabilized, financed, and translated into durable systemic influence.
+      </p>
+      <p>
+        This platform exists to render that logic visible through institutional hierarchy, disciplined editorial structure, and reference-grade presentation.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section-block section-block-surface" aria-labelledby="architecture-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Platform Architecture</p>
+      <h2 id="architecture-title" class="section-title">Structured paths into the system</h2>
+    </div>
+
+    <div class="card-grid card-grid-3">
+      <article class="editorial-card">
+        <div class="editorial-card-top">
+          <p class="editorial-index">01</p>
+          <h3 class="editorial-title">Framework</h3>
+        </div>
+        <p class="editorial-text">
+          Foundational architecture for understanding Singapore’s role across maritime control, energy transition, logistics, and commodity systems.
+        </p>
+        <a class="text-link" href="/framework/">Open Framework</a>
+      </article>
+
+      <article class="editorial-card">
+        <div class="editorial-card-top">
+          <p class="editorial-index">02</p>
+          <h3 class="editorial-title">Analysis</h3>
+        </div>
+        <p class="editorial-text">
+          Articles and chronicles transform current developments into durable strategic interpretation rather than transient commentary.
+        </p>
+        <a class="text-link" href="/articles/">Open Analysis</a>
+      </article>
+
+      <article class="editorial-card">
+        <div class="editorial-card-top">
+          <p class="editorial-index">03</p>
+          <h3 class="editorial-title">Tools</h3>
+        </div>
+        <p class="editorial-text">
+          Operational interfaces will convert abstract node theory into usable frameworks for flow mapping, route logic, and commodity interpretation.
+        </p>
+        <a class="text-link" href="/tools/">Open Tools</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section-block" aria-labelledby="audience-title">
+  <div class="shell summary-grid">
+    <div class="summary-copy">
+      <p class="section-kicker">Institutional Relevance</p>
+      <h2 id="audience-title" class="section-title">Built for serious reading, not casual content drift</h2>
+      <div class="body-copy">
+        <p>
+          The platform is designed for layered audiences: undergraduate and graduate students, doctoral researchers, policy readers, strategic market observers, and professionals who require coherence rather than noise.
+        </p>
+        <p>
+          Its purpose is not to imitate a media outlet. Its purpose is to establish a durable interpretive surface around commodity movement, power, and regional coordination.
+        </p>
+      </div>
+    </div>
+
+    <div class="detail-stack">
+      <article class="detail-card">
+        <h3 class="detail-title">Position</h3>
+        <p class="detail-value">Reference platform</p>
+      </article>
+      <article class="detail-card">
+        <h3 class="detail-title">Model</h3>
+        <p class="detail-value">Institutional publishing engine</p>
+      </article>
+      <article class="detail-card">
+        <h3 class="detail-title">Operator intent</h3>
+        <p class="detail-value">Authority, monetization, long-horizon asset value</p>
+      </article>
+    </div>
+  </div>
+</section>
+{% endblock %}
