@@ -1,8 +1,5 @@
 """
-Strategic rendering layer.
-
-This renderer takes normalized editorial nodes and produces a coherent,
-institutional output surface without breaking the existing content base.
+Page rendering engine.
 """
 
 from __future__ import annotations
@@ -17,7 +14,7 @@ from .utils import BuildError, Logger, write_file
 
 
 class PageRenderer:
-    """Render all sovereign pages into dist/ using normalized content nodes."""
+    """Render HTML pages from Jinja templates."""
 
     def __init__(self, templates_dir: Path, dist_dir: Path, logger: Logger) -> None:
         self.templates_dir = Path(templates_dir)
@@ -34,10 +31,6 @@ class PageRenderer:
         self.env.globals["now"] = lambda: datetime.now(timezone.utc)
         self.env.filters["rstrip_slash"] = lambda value: value.rstrip("/") if isinstance(value, str) else value
 
-    # ------------------------------------------------------------------
-    # Public rendering API
-    # ------------------------------------------------------------------
-
     def render_all(
         self,
         site_data: Dict[str, Any],
@@ -48,11 +41,9 @@ class PageRenderer:
     ) -> List[Dict[str, Any]]:
         generated_pages: List[Dict[str, Any]] = []
 
-        home_node = content_map.get("home")
-        if not home_node:
-            raise BuildError("Content map missing required home node")
+        home_node = content_map["home"]
+        collections = content_map["collections"]
 
-        # Render home
         generated_pages.append(
             self._render_node(
                 node=home_node,
@@ -60,20 +51,11 @@ class PageRenderer:
                 site_data=site_data,
                 navigation=navigation,
                 environment=environment,
-                schema=self._generate_schema_for_node(
-                    node=home_node,
-                    site_data=site_data,
-                    schema_generator=schema_generator,
-                ),
+                schema=schema_generator.generate_homepage(site_data),
             )
         )
 
-        # Render all collections
-        collections = content_map.get("collections", {})
-        if not isinstance(collections, dict):
-            raise BuildError("Invalid content map: collections must be an object")
-
-        for collection_name in ("pages", "articles", "chronicles", "guides", "tools"):
+        for collection_name in ("pages", "articles", "chronicles", "cities", "guides", "tools"):
             nodes = collections.get(collection_name, [])
             if not isinstance(nodes, list):
                 raise BuildError(f"Invalid collection: {collection_name}")
@@ -110,24 +92,14 @@ class PageRenderer:
                 "environment": environment,
                 "is_production": environment == "production",
                 "page": {
-                    "title": f"{status_code}",
+                    "title": str(status_code),
                     "description": message,
                     "canonical": f"{site_data['url'].rstrip('/')}/{status_code}.html",
                     "slug": str(status_code),
-                    "url_path": f"/{status_code}.html",
                     "is_home": False,
-                    "is_index": False,
+                    "url_path": f"/{status_code}.html",
                     "schema": "",
-                    "content_type": "error",
-                    "content": {
-                        "eyebrow": "System Response",
-                        "headline": str(status_code),
-                        "intro": message,
-                        "highlights": [],
-                        "sections": [],
-                        "summary": "",
-                        "body": "",
-                    },
+                    "content": {},
                 },
                 "error": {
                     "code": status_code,
@@ -143,10 +115,6 @@ class PageRenderer:
                 metadata=False,
             )
 
-    # ------------------------------------------------------------------
-    # Internal rendering helpers
-    # ------------------------------------------------------------------
-
     def _render_node(
         self,
         node: Dict[str, Any],
@@ -156,26 +124,24 @@ class PageRenderer:
         environment: str,
         schema: str,
     ) -> Dict[str, Any]:
-        page_context = {
-            "title": node["title"],
-            "description": node["description"],
-            "canonical": f"{site_data['url'].rstrip('/')}{node['url_path']}",
-            "slug": node["slug"],
-            "url_path": node["url_path"],
-            "is_home": bool(node.get("is_home", False)),
-            "is_index": bool(node.get("is_index", False)),
-            "content_type": node["content_type"],
-            "schema": schema,
-            "content": node["content"],
-        }
+        url_path = node["url_path"]
+        canonical = f"{site_data['url'].rstrip('/')}{url_path}"
 
         context = {
             "site": site_data,
             "navigation": navigation,
             "environment": environment,
             "is_production": environment == "production",
-            "page": page_context,
-            "node": node,
+            "page": {
+                "title": node["title"],
+                "description": node["description"],
+                "canonical": canonical,
+                "slug": "index" if node.get("is_home") else node["slug"],
+                "is_home": bool(node.get("is_home", False)),
+                "url_path": url_path,
+                "schema": schema,
+                "content": node.get("content", {}),
+            },
         }
 
         return self._render_template_to_path(
@@ -184,33 +150,19 @@ class PageRenderer:
             context=context,
         )
 
+    def _resolve_output_path(self, node: Dict[str, Any]) -> Path:
+        url_path = node["url_path"].strip("/")
+        if not url_path:
+            return self.dist_dir / "index.html"
+        return self.dist_dir / url_path / "index.html"
+
     def _generate_schema_for_node(
         self,
         node: Dict[str, Any],
         site_data: Dict[str, Any],
         schema_generator: Any,
     ) -> str:
-        if node.get("is_home"):
-            if hasattr(schema_generator, "generate_homepage"):
-                return schema_generator.generate_homepage(site_data)
-            if hasattr(schema_generator, "generate_organization"):
-                return schema_generator.generate_organization(site_data)
-            return ""
-
-        if hasattr(schema_generator, "generate_webpage"):
-            return schema_generator.generate_webpage(node, site_data, node["slug"])
-
-        return ""
-
-    def _resolve_output_path(self, node: Dict[str, Any]) -> Path:
-        if node.get("is_home"):
-            return self.dist_dir / "index.html"
-
-        relative = node["url_path"].strip("/")
-        if not relative:
-            return self.dist_dir / "index.html"
-
-        return self.dist_dir / relative / "index.html"
+        return schema_generator.generate_webpage(node, site_data, node["slug"])
 
     def _render_template_to_path(
         self,
@@ -229,15 +181,22 @@ class PageRenderer:
 
         slug = context["page"]["slug"]
         title = context["page"]["title"]
+        url_path = context["page"]["url_path"]
 
         self.logger.info(f"Rendered {template_name} -> {output_path.relative_to(self.dist_dir.parent)}")
 
         if not metadata:
-            return {"slug": slug, "title": title, "path": str(output_path)}
+            return {
+                "slug": slug,
+                "title": title,
+                "path": str(output_path),
+                "url_path": url_path,
+            }
 
         return {
             "slug": slug,
             "title": title,
             "path": str(output_path.relative_to(self.dist_dir.parent)).replace("\\", "/"),
             "template": template_name,
+            "url_path": url_path,
         }
