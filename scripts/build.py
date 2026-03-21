@@ -47,7 +47,11 @@ class BuildSystem:
         self.version = version
         self.is_production = environment == "production"
 
-        self.root_dir = Path(__file__).parent.resolve()
+        # IMPORTANT:
+        # __file__ = <project_root>/scripts/build.py
+        # parent     = <project_root>/scripts
+        # parent.parent = <project_root>
+        self.root_dir = Path(__file__).resolve().parent.parent
         self.dist_dir = self.root_dir / "dist"
         self.assets_dir = self.root_dir / "assets"
         self.static_dir = self.root_dir / "static"
