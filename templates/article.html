@@ -1,8 +1,131 @@
-<article class="article">
-  <div class="container narrow">
-    <h1>{{ title }}</h1>
-    <div class="prose">
-      {{ content | safe }}
+{% extends "base.html" %}
+
+{% block body_class %}article-body{% endblock %}
+
+{% block content %}
+<section class="content-hero content-hero-article" aria-labelledby="article-title">
+  <div class="shell content-hero-grid">
+    <div class="content-hero-copy">
+      <p class="eyebrow">
+        {% if page.content and page.content.eyebrow %}
+          {{ page.content.eyebrow }}
+        {% else %}
+          Article
+        {% endif %}
+      </p>
+
+      <h1 id="article-title" class="content-title">
+        {% if page.content and page.content.headline %}
+          {{ page.content.headline }}
+        {% else %}
+          {{ page.title }}
+        {% endif %}
+      </h1>
+
+      <p class="lead content-lead">
+        {% if page.content and page.content.intro %}
+          {{ page.content.intro }}
+        {% else %}
+          {{ page.description }}
+        {% endif %}
+      </p>
+    </div>
+
+    <aside class="content-sidepanel" aria-label="Article context">
+      <article class="context-card">
+        <p class="context-kicker">Format</p>
+        <p class="context-value">Long-form analysis</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">Use</p>
+        <p class="context-value">Research and interpretation</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">Category</p>
+        <p class="context-value">{{ page.title }}</p>
+      </article>
+    </aside>
+  </div>
+</section>
+
+{% if page.content and page.content.highlights %}
+<section class="section-block section-block-surface" aria-labelledby="article-highlights-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Highlights</p>
+      <h2 id="article-highlights-title" class="section-title">Primary takeaways</h2>
+    </div>
+
+    <div class="card-grid card-grid-2">
+      {% for highlight in page.content.highlights %}
+      <article class="editorial-card editorial-card-compact">
+        <div class="editorial-card-top">
+          <p class="editorial-index">{{ "%02d"|format(loop.index) }}</p>
+          <h3 class="editorial-title">{{ highlight }}</h3>
+        </div>
+      </article>
+      {% endfor %}
     </div>
   </div>
-</article>
+</section>
+{% endif %}
+
+{% if page.content and page.content.sections %}
+<section class="section-block" aria-labelledby="article-structure-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Analytical Structure</p>
+      <h2 id="article-structure-title" class="section-title">Core lines of argument</h2>
+    </div>
+
+    <div class="structured-sections">
+      {% for section in page.content.sections %}
+      <article class="structured-section">
+        <div class="structured-section-header">
+          <p class="editorial-index">{{ "%02d"|format(loop.index) }}</p>
+          <h3 class="structured-section-title">{{ section.heading }}</h3>
+        </div>
+        <div class="structured-section-body">
+          <p>{{ section.body }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section-block" aria-labelledby="article-body-title">
+  <div class="shell article-layout">
+    <article class="content-main">
+      <div class="section-heading section-heading-inline">
+        <p class="section-kicker">Full Analysis</p>
+        <h2 id="article-body-title" class="section-title">Article body</h2>
+      </div>
+
+      <div class="page-content prose prose-article">
+        {{ page.content.body | safe }}
+      </div>
+    </article>
+
+    <aside class="content-rail" aria-label="Article metadata">
+      {% if page.content and page.content.summary %}
+      <article class="detail-card">
+        <h3 class="detail-title">Summary</h3>
+        <p class="detail-value detail-value-body">{{ page.content.summary }}</p>
+      </article>
+      {% endif %}
+
+      <article class="detail-card">
+        <h3 class="detail-title">Canonical</h3>
+        <p class="detail-value detail-value-small">{{ page.canonical }}</p>
+      </article>
+
+      <article class="detail-card">
+        <h3 class="detail-title">Reading posture</h3>
+        <p class="detail-value">Institutional interpretation</p>
+      </article>
+    </aside>
+  </div>
+</section>
+{% endblock %}
