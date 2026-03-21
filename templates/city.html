@@ -1,36 +1,126 @@
-<section class="hero">
-  <div class="container">
-    <p class="eyebrow">Strategic Commodity Node</p>
-    <h1>{{ city.title }}</h1>
-    <p class="lead">{{ city.hero_subtitle }}</p>
+{% extends "base.html" %}
+
+{% block body_class %}city-body{% endblock %}
+
+{% block content %}
+<section class="content-hero content-hero-city" aria-labelledby="city-title">
+  <div class="shell content-hero-grid">
+    <div class="content-hero-copy">
+      <p class="eyebrow">
+        {% if page.content and page.content.eyebrow %}
+          {{ page.content.eyebrow }}
+        {% else %}
+          Strategic Node
+        {% endif %}
+      </p>
+
+      <h1 id="city-title" class="content-title">
+        {% if page.content and page.content.headline %}
+          {{ page.content.headline }}
+        {% else %}
+          {{ page.title }}
+        {% endif %}
+      </h1>
+
+      <p class="lead content-lead">
+        {% if page.content and page.content.intro %}
+          {{ page.content.intro }}
+        {% else %}
+          {{ page.description }}
+        {% endif %}
+      </p>
+    </div>
+
+    <aside class="content-sidepanel" aria-label="Node profile">
+      <article class="context-card">
+        <p class="context-kicker">Node Type</p>
+        <p class="context-value">Commodity coordination city</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">Function</p>
+        <p class="context-value">System organization</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">Lens</p>
+        <p class="context-value">Maritime, energy, finance, logistics</p>
+      </article>
+    </aside>
   </div>
 </section>
 
-<section class="section">
-  <div class="container narrow prose">
-    <h2>Core Thesis</h2>
-    <p>{{ city.thesis }}</p>
-  </div>
-</section>
+{% if page.content and page.content.highlights %}
+<section class="section-block section-block-surface" aria-labelledby="city-highlights-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Node Functions</p>
+      <h2 id="city-highlights-title" class="section-title">Primary strategic attributes</h2>
+    </div>
 
-<section class="section">
-  <div class="container cards">
-    {% for section in city.sections %}
-    <article class="card">
-      <h3>{{ section.heading }}</h3>
-      <p>{{ section.body }}</p>
-    </article>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="section">
-  <div class="container narrow">
-    <h2>Reference Paths</h2>
-    <ul>
-      {% for path in city.reference_paths %}
-      <li>{{ path.title }}</li>
+    <div class="card-grid card-grid-2">
+      {% for highlight in page.content.highlights %}
+      <article class="editorial-card">
+        <div class="editorial-card-top">
+          <p class="editorial-index">{{ "%02d"|format(loop.index) }}</p>
+          <h3 class="editorial-title">{{ highlight }}</h3>
+        </div>
+      </article>
       {% endfor %}
-    </ul>
+    </div>
   </div>
 </section>
+{% endif %}
+
+{% if page.content and page.content.sections %}
+<section class="section-block" aria-labelledby="city-sections-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Strategic Breakdown</p>
+      <h2 id="city-sections-title" class="section-title">How the node operates</h2>
+    </div>
+
+    <div class="structured-sections">
+      {% for section in page.content.sections %}
+      <article class="structured-section">
+        <div class="structured-section-header">
+          <p class="editorial-index">{{ "%02d"|format(loop.index) }}</p>
+          <h3 class="structured-section-title">{{ section.heading }}</h3>
+        </div>
+        <div class="structured-section-body">
+          <p>{{ section.body }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section-block section-block-surface" aria-labelledby="city-body-title">
+  <div class="shell city-layout">
+    <article class="content-main">
+      <div class="section-heading section-heading-inline">
+        <p class="section-kicker">Node Text</p>
+        <h2 id="city-body-title" class="section-title">Reference narrative</h2>
+      </div>
+
+      <div class="page-content prose prose-city">
+        {{ page.content.body | safe }}
+      </div>
+    </article>
+
+    <aside class="content-rail" aria-label="Node summary">
+      {% if page.content and page.content.summary %}
+      <article class="detail-card">
+        <h3 class="detail-title">Strategic summary</h3>
+        <p class="detail-value detail-value-body">{{ page.content.summary }}</p>
+      </article>
+      {% endif %}
+
+      <article class="detail-card">
+        <h3 class="detail-title">Page type</h3>
+        <p class="detail-value">City / Node interface</p>
+      </article>
+    </aside>
+  </div>
+</section>
+{% endblock %}
