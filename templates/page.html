@@ -1,8 +1,128 @@
-<section class="section">
-  <div class="container narrow">
-    <h1>{{ title }}</h1>
-    <div class="prose">
-      {{ content | safe }}
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-hero" aria-labelledby="page-title">
+  <div class="shell page-hero-grid">
+    <div class="page-hero-copy">
+      <p class="eyebrow">
+        {% if page.content and page.content.eyebrow %}
+          {{ page.content.eyebrow }}
+        {% else %}
+          Institutional Layer
+        {% endif %}
+      </p>
+
+      <h1 id="page-title" class="page-title">
+        {% if page.content and page.content.headline %}
+          {{ page.content.headline }}
+        {% else %}
+          {{ page.title }}
+        {% endif %}
+      </h1>
+
+      <p class="lead page-lead">
+        {% if page.content and page.content.intro %}
+          {{ page.content.intro }}
+        {% else %}
+          {{ page.description }}
+        {% endif %}
+      </p>
+    </div>
+
+    <aside class="page-hero-panel" aria-label="Page context">
+      <div class="context-card">
+        <p class="context-kicker">Section</p>
+        <p class="context-value">{{ page.title }}</p>
+      </div>
+      <div class="context-card">
+        <p class="context-kicker">Route</p>
+        <p class="context-value">{{ page.url_path }}</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+{% if page.content and page.content.highlights %}
+<section class="section-block section-block-surface" aria-labelledby="page-highlights-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Key Signals</p>
+      <h2 id="page-highlights-title" class="section-title">Primary interpretive markers</h2>
+    </div>
+
+    <div class="card-grid card-grid-2">
+      {% for highlight in page.content.highlights %}
+      <article class="editorial-card editorial-card-compact">
+        <div class="editorial-card-top">
+          <p class="editorial-index">{{ "%02d"|format(loop.index) }}</p>
+          <h3 class="editorial-title">{{ highlight }}</h3>
+        </div>
+      </article>
+      {% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
+
+{% if page.content and page.content.sections %}
+<section class="section-block" aria-labelledby="page-sections-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Structured Reading</p>
+      <h2 id="page-sections-title" class="section-title">Core analytical sections</h2>
+    </div>
+
+    <div class="structured-sections">
+      {% for section in page.content.sections %}
+      <article class="structured-section">
+        <div class="structured-section-header">
+          <p class="editorial-index">{{ "%02d"|format(loop.index) }}</p>
+          <h3 class="structured-section-title">{{ section.heading }}</h3>
+        </div>
+        <div class="structured-section-body">
+          <p>{{ section.body }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if page.content and page.content.summary %}
+<section class="section-block section-block-surface" aria-labelledby="page-summary-title">
+  <div class="shell summary-grid">
+    <div class="summary-copy">
+      <p class="section-kicker">Closing Position</p>
+      <h2 id="page-summary-title" class="section-title">Institutional summary</h2>
+      <p class="body-copy">{{ page.content.summary }}</p>
+    </div>
+
+    <div class="detail-stack">
+      <article class="detail-card">
+        <h3 class="detail-title">Reading mode</h3>
+        <p class="detail-value">Reference layer</p>
+      </article>
+      <article class="detail-card">
+        <h3 class="detail-title">Canonical path</h3>
+        <p class="detail-value detail-value-small">{{ page.canonical }}</p>
+      </article>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if page.content and page.content.body %}
+<section class="section-block" aria-labelledby="page-body-title">
+  <div class="shell narrow-shell">
+    <div class="section-heading">
+      <p class="section-kicker">Extended Content</p>
+      <h2 id="page-body-title" class="section-title">Full text</h2>
+    </div>
+    <div class="page-content prose">
+      {{ page.content.body | safe }}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
