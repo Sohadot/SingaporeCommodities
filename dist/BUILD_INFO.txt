@@ -1,0 +1,12 @@
+Singapore Commodities Build Information
+======================================
+Version: 1.0.0
+Environment: production
+Timestamp: 2026-03-21T22:59:45.793074+00:00
+Git Commit: b8259fb
+Git Branch: main
+Pages: 21
+Assets: 5
+Home Synthetic: False
+Collection Counts: pages=11, articles=3, chronicles=2, cities=0, guides=3, tools=1
+Required Routes: /, /about, /articles, /chronicles, /contact, /framework, /guide, /manifesto, /privacy, /terms, /tools

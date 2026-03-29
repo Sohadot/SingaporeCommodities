@@ -1,0 +1,196 @@
+{
+  "version": "1.0.0",
+  "environment": "production",
+  "timestamp": "2026-03-21T22:59:45.793074+00:00",
+  "duration_seconds": 0.554051,
+  "git": {
+    "commit": "b8259fb",
+    "branch": "main"
+  },
+  "build": {
+    "pages_count": 21,
+    "assets_count": 5,
+    "total_asset_bytes": 32726
+  },
+  "contract": {
+    "total_nodes": 21,
+    "collection_counts": {
+      "pages": 11,
+      "articles": 3,
+      "chronicles": 2,
+      "cities": 0,
+      "guides": 3,
+      "tools": 1
+    },
+    "required_navigation_routes": [
+      "/",
+      "/about",
+      "/articles",
+      "/chronicles",
+      "/contact",
+      "/framework",
+      "/guide",
+      "/manifesto",
+      "/privacy",
+      "/terms",
+      "/tools"
+    ],
+    "home_is_synthetic": false,
+    "site_url": "https://singaporecommodities.com"
+  },
+  "pages": [
+    {
+      "slug": "index",
+      "title": "Singapore Commodities",
+      "path": "index.html",
+      "url_path": "/"
+    },
+    {
+      "slug": "about",
+      "title": "About",
+      "path": "about\\index.html",
+      "url_path": "/about/"
+    },
+    {
+      "slug": "articles",
+      "title": "Articles",
+      "path": "articles\\index.html",
+      "url_path": "/articles/"
+    },
+    {
+      "slug": "chronicles",
+      "title": "Chronicles",
+      "path": "chronicles\\index.html",
+      "url_path": "/chronicles/"
+    },
+    {
+      "slug": "contact",
+      "title": "Contact",
+      "path": "contact\\index.html",
+      "url_path": "/contact/"
+    },
+    {
+      "slug": "framework",
+      "title": "Framework",
+      "path": "framework\\index.html",
+      "url_path": "/framework/"
+    },
+    {
+      "slug": "guide",
+      "title": "Guides",
+      "path": "guide\\index.html",
+      "url_path": "/guide/"
+    },
+    {
+      "slug": "manifesto",
+      "title": "Manifesto",
+      "path": "manifesto\\index.html",
+      "url_path": "/manifesto/"
+    },
+    {
+      "slug": "privacy",
+      "title": "Privacy Policy",
+      "path": "privacy\\index.html",
+      "url_path": "/privacy/"
+    },
+    {
+      "slug": "join",
+      "title": "Request Strategic Access",
+      "path": "join\\index.html",
+      "url_path": "/join/"
+    },
+    {
+      "slug": "terms",
+      "title": "Terms of Use",
+      "path": "terms\\index.html",
+      "url_path": "/terms/"
+    },
+    {
+      "slug": "tools",
+      "title": "Tools",
+      "path": "tools\\index.html",
+      "url_path": "/tools/"
+    },
+    {
+      "slug": "how-singapore-organizes-commodity-flows",
+      "title": "How Singapore Organizes Commodity Flows",
+      "path": "articles\\how-singapore-organizes-commodity-flows\\index.html",
+      "url_path": "/articles/how-singapore-organizes-commodity-flows/"
+    },
+    {
+      "slug": "singapore-and-maritime-fuel-power",
+      "title": "Singapore and Maritime Fuel Power",
+      "path": "articles\\singapore-and-maritime-fuel-power\\index.html",
+      "url_path": "/articles/singapore-and-maritime-fuel-power/"
+    },
+    {
+      "slug": "why-singapore-dominates-lng-trade",
+      "title": "Why Singapore Dominates LNG Trade",
+      "path": "articles\\why-singapore-dominates-lng-trade\\index.html",
+      "url_path": "/articles/why-singapore-dominates-lng-trade/"
+    },
+    {
+      "slug": "cc-001-asia-energy-realignment",
+      "title": "CC-001 — Asia Energy Realignment",
+      "path": "chronicles\\cc-001-asia-energy-realignment\\index.html",
+      "url_path": "/chronicles/cc-001-asia-energy-realignment/"
+    },
+    {
+      "slug": "cc-002-pressure-on-maritime-routes",
+      "title": "CC-002 — Pressure on Maritime Routes",
+      "path": "chronicles\\cc-002-pressure-on-maritime-routes\\index.html",
+      "url_path": "/chronicles/cc-002-pressure-on-maritime-routes/"
+    },
+    {
+      "slug": "how-maritime-trade-flows-work",
+      "title": "How Maritime Trade Flows Work",
+      "path": "guide\\how-maritime-trade-flows-work\\index.html",
+      "url_path": "/guide/how-maritime-trade-flows-work/"
+    },
+    {
+      "slug": "routing-vs-production-in-commodity-power",
+      "title": "Routing vs Production in Commodity Power",
+      "path": "guide\\routing-vs-production-in-commodity-power\\index.html",
+      "url_path": "/guide/routing-vs-production-in-commodity-power/"
+    },
+    {
+      "slug": "what-is-a-commodity-node",
+      "title": "What Is a Commodity Node?",
+      "path": "guide\\what-is-a-commodity-node\\index.html",
+      "url_path": "/guide/what-is-a-commodity-node/"
+    },
+    {
+      "slug": "singapore-flow-intelligence",
+      "title": "Singapore Flow Intelligence Explorer",
+      "path": "tools\\singapore-flow-intelligence\\index.html",
+      "url_path": "/tools/singapore-flow-intelligence/"
+    }
+  ],
+  "assets": [
+    {
+      "path": "assets/css/main.css",
+      "size": 26520,
+      "checksum": "2a5ebc408031ee88dae809585cf7bd3ac2c5f173ede9c8dfbb07f93b6410b258"
+    },
+    {
+      "path": "assets/images/favicon.svg",
+      "size": 119,
+      "checksum": "0ce47a1660332aafb78032722a5cf193d56207e57e8ea1e6985beee10ebd2da4"
+    },
+    {
+      "path": "assets/images/logo.svg",
+      "size": 121,
+      "checksum": "b1c35c52df11e0136598de13aae1e0e0a2088880fbf938d71711c3b8d38efbe9"
+    },
+    {
+      "path": "assets/js/main.js",
+      "size": 5825,
+      "checksum": "8b32818503c62eabb37faa7ce293f0a4ae23faad7fd2a498f33159aef5514468"
+    },
+    {
+      "path": "_headers",
+      "size": 141,
+      "checksum": "b57d65ac392e65454b590c01b328f8c5a3b1c89369f27aa7b76fd84a291e121e"
+    }
+  ]
+}
