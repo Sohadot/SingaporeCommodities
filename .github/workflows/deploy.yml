@@ -10,6 +10,7 @@ on:
 
 env:
   PYTHON_VERSION: "3.11.8"
+  NODE_VERSION: "20"
 
 jobs:
   build-and-deploy:
@@ -69,6 +70,11 @@ jobs:
           name: dist-${{ steps.build_env.outputs.environment }}
           path: dist/
           retention-days: 30
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
