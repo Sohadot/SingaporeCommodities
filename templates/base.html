@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+{% if site.gtm_id and is_production %}
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ site.gtm_id }}');</script>
+<!-- End Google Tag Manager -->
+{% endif %}
 <html lang="{{ site.language | default('en') }}" data-env="{{ environment }}" data-version="{{ site.version }}">
 <head>
   <meta charset="{{ site.charset | default('UTF-8') }}">
@@ -7,6 +12,10 @@
   <meta name="author" content="{{ site.author }}">
   <meta name="generator" content="Singapore Commodities Sovereign Build System">
   <meta name="theme-color" content="{{ site.theme_color | default('#05070D') }}">
+
+  {% if site.search_console_verification and is_production %}
+  <meta name="google-site-verification" content="{{ site.search_console_verification }}">
+  {% endif %}
 
   {% if is_production %}
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -59,6 +68,12 @@
   </main>
 
   {% include "partials/footer.html" %}
+
+  {% if site.gtm_id and is_production %}
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  {% endif %}
 
   {% if not is_production %}
   <div class="preview-indicator" role="status" aria-label="Preview environment">

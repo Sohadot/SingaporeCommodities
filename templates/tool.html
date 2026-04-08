@@ -34,15 +34,15 @@
     <aside class="content-sidepanel" aria-label="Tool profile">
       <article class="context-card">
         <p class="context-kicker">Type</p>
-        <p class="context-value">Interpretive interface</p>
+        <p class="context-value">{{ page.content.eyebrow if page.content and page.content.eyebrow else "Interpretive interface" }}</p>
       </article>
       <article class="context-card">
-        <p class="context-kicker">Mode</p>
-        <p class="context-value">Analytical assistance</p>
+        <p class="context-kicker">Methodology</p>
+        <p class="context-value">Human-curated. No AI. No external API.</p>
       </article>
       <article class="context-card">
-        <p class="context-kicker">Future role</p>
-        <p class="context-value">Dynamic strategic instrumentation</p>
+        <p class="context-kicker">Data Sovereignty</p>
+        <p class="context-value">All data is local. No third-party dependency.</p>
       </article>
     </aside>
   </div>
@@ -53,7 +53,7 @@
   <div class="shell">
     <div class="section-heading">
       <p class="section-kicker">Tool Capabilities</p>
-      <h2 id="tool-highlights-title" class="section-title">Core interpretive functions</h2>
+      <h2 id="tool-highlights-title" class="section-title">Core analytical functions</h2>
     </div>
 
     <div class="card-grid card-grid-2">
@@ -70,6 +70,91 @@
 </section>
 {% endif %}
 
+{% if page.slug == "node-power-index" %}
+{# ── Node Power Index: Full Interactive Interface ── #}
+<section class="section-block" aria-labelledby="npi-interface-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Analytical Interface</p>
+      <h2 id="npi-interface-title" class="section-title">Select a node to assess its power profile</h2>
+    </div>
+
+    <div class="npi-controls">
+      <div class="tool-field">
+        <label for="npi-node-select" class="tool-label">Primary Node</label>
+        <select id="npi-node-select" class="tool-control">
+          <option value="singapore">Singapore — Coordination</option>
+          <option value="london">London — Pricing</option>
+          <option value="geneva">Geneva — Structuring</option>
+          <option value="rotterdam">Rotterdam — Routing</option>
+          <option value="shanghai">Shanghai — Demand</option>
+          <option value="dubai">Dubai — Gulf Routing</option>
+        </select>
+      </div>
+
+      <div class="tool-field">
+        <label for="npi-compare-select" class="tool-label">Compare With (optional)</label>
+        <select id="npi-compare-select" class="tool-control">
+          <option value="none">— No comparison —</option>
+          <option value="singapore">Singapore</option>
+          <option value="london">London</option>
+          <option value="geneva">Geneva</option>
+          <option value="rotterdam">Rotterdam</option>
+          <option value="shanghai">Shanghai</option>
+          <option value="dubai">Dubai</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="npi-layout">
+      <div class="npi-radar-panel">
+        <div id="npi-radar" class="npi-radar" aria-live="polite">
+          <p class="npi-loading">Loading radar chart...</p>
+        </div>
+      </div>
+
+      <div class="npi-data-panel">
+        <div id="npi-profile" class="npi-profile-container" aria-live="polite"></div>
+        <div id="npi-table" class="npi-table-container" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-block section-block-surface" aria-labelledby="npi-legend-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Layer Classification</p>
+      <h2 id="npi-legend-title" class="section-title">Understanding node layers</h2>
+    </div>
+    <div class="card-grid card-grid-3">
+      <article class="editorial-card">
+        <div class="editorial-card-top">
+          <span class="npi-layer-dot" style="background:#E74C3C"></span>
+          <h3 class="editorial-title">Production Nodes</h3>
+        </div>
+        <p class="editorial-text">Power derived from commodity extraction, manufacturing, or transformation capacity. Qatar (LNG), Saudi Arabia (oil), Indonesia (coal) are production nodes.</p>
+      </article>
+      <article class="editorial-card">
+        <div class="editorial-card-top">
+          <span class="npi-layer-dot" style="background:#2ECC71"></span>
+          <h3 class="editorial-title">Routing Nodes</h3>
+        </div>
+        <p class="editorial-text">Power derived from control of physical movement pathways — ports, chokepoints, storage, and distribution. Rotterdam and Dubai are routing nodes.</p>
+      </article>
+      <article class="editorial-card">
+        <div class="editorial-card-top">
+          <span class="npi-layer-dot" style="background:#C9A24A"></span>
+          <h3 class="editorial-title">Coordination Nodes</h3>
+        </div>
+        <p class="editorial-text">Power derived from organizing the system itself — financial, institutional, and logistical infrastructure that shapes how commodities move. Singapore is the primary coordination node.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% else %}
+{# ── Default Tool Interface: Flow Intelligence Explorer ── #}
 <section class="section-block" aria-labelledby="tool-interface-title">
   <div class="shell tool-layout">
     <article class="tool-interface">
@@ -83,9 +168,11 @@
           <label for="tool-commodity" class="tool-label">Commodity</label>
           <select id="tool-commodity" class="tool-control">
             <option value="lng">LNG</option>
-            <option value="oil">Oil</option>
+            <option value="oil">Crude Oil</option>
             <option value="bunkering">Bunkering Fuel</option>
-            <option value="metals">Metals</option>
+            <option value="fuel-oil">Fuel Oil</option>
+            <option value="naphtha">Naphtha</option>
+            <option value="metals">Industrial Metals</option>
             <option value="agriculture">Agriculture</option>
           </select>
         </div>
@@ -93,10 +180,11 @@
         <div class="tool-field">
           <label for="tool-function" class="tool-label">Interpretive Function</label>
           <select id="tool-function" class="tool-control">
-            <option value="routing">Routing</option>
-            <option value="coordination">Coordination</option>
-            <option value="stabilization">Stabilization</option>
+            <option value="routing">Routing Logic</option>
+            <option value="coordination">Coordination Capacity</option>
+            <option value="stabilization">Flow Stabilization</option>
             <option value="strategic-relevance">Strategic Relevance</option>
+            <option value="pricing">Price Formation</option>
           </select>
         </div>
 
@@ -104,8 +192,8 @@
           <button type="button" class="button button-primary" id="tool-analyze-button">Analyze</button>
         </div>
 
-        <div class="tool-result" id="tool-result" aria-live="polite">
-          Select a commodity and an interpretive function to generate a structured analytical prompt surface.
+        <div class="tool-result" id="tool-result" role="region" aria-live="polite" aria-label="Analysis output">
+          Select a commodity and an interpretive function to generate a structured analytical output.
         </div>
       </div>
     </article>
@@ -119,17 +207,18 @@
       {% endif %}
 
       <article class="detail-card">
-        <h3 class="detail-title">Current state</h3>
-        <p class="detail-value">Reference-grade interface</p>
+        <h3 class="detail-title">Methodology</h3>
+        <p class="detail-value">Human-curated interpretation. No algorithmic output. No external data dependency.</p>
       </article>
 
       <article class="detail-card">
-        <h3 class="detail-title">Target evolution</h3>
-        <p class="detail-value">Dynamic market-linked tooling</p>
+        <h3 class="detail-title">Reference framework</h3>
+        <p class="detail-value">All outputs are anchored to the Routing Power vs. Production Power analytical framework.</p>
       </article>
     </aside>
   </div>
 </section>
+{% endif %}
 
 {% if page.content and page.content.sections %}
 <section class="section-block section-block-surface" aria-labelledby="tool-sections-title">
@@ -169,5 +258,16 @@
     </div>
   </div>
 </section>
+{% endif %}
+
+{% if page.slug == "node-power-index" %}
+<script src="/assets/js/tools/node-power-index.js" defer></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.SCI && window.SCI.initNPI) {
+      window.SCI.initNPI();
+    }
+  });
+</script>
 {% endif %}
 {% endblock %}

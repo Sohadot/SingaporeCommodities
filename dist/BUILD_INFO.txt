@@ -2,11 +2,11 @@ Singapore Commodities Build Information
 ======================================
 Version: 1.0.0
 Environment: production
-Timestamp: 2026-03-21T22:59:45.793074+00:00
-Git Commit: b8259fb
-Git Branch: main
-Pages: 21
-Assets: 5
+Timestamp: 2026-04-08T03:32:13.674347+00:00
+Git Commit: 59f5908
+Git Branch: claude/enhance-digital-reference-platform-6AJJ7
+Pages: 96
+Assets: 6
 Home Synthetic: False
-Collection Counts: pages=11, articles=3, chronicles=2, cities=0, guides=3, tools=1
-Required Routes: /, /about, /articles, /chronicles, /contact, /framework, /guide, /manifesto, /privacy, /terms, /tools
+Collection Counts: pages=14, articles=3, chronicles=2, cities=5, guides=3, tools=2
+Required Routes: /, /about, /articles, /chronicles, /commodities, /contact, /framework, /glossary, /guide, /manifesto, /nodes, /privacy, /terms, /tools

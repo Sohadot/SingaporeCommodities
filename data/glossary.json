@@ -1,0 +1,362 @@
+[
+  {
+    "slug": "coordination-node",
+    "term": "Coordination Node",
+    "category": "framework",
+    "tier": "core",
+    "definition": "A geographic location that derives strategic power not from commodity ownership or production, but from its capacity to organize, direct, and stabilize the movement of commodities through the global system. A coordination node operates as a meta-layer above both production and routing.",
+    "related_terms": ["routing-power", "production-power", "coordination-layer"],
+    "platform_context": "Singapore is the primary example of a coordination node in this framework. Its power is invisible in production statistics but decisive in flow outcomes."
+  },
+  {
+    "slug": "coordination-layer",
+    "term": "Coordination Layer",
+    "category": "framework",
+    "tier": "core",
+    "definition": "The systemic level at which the organizing logic of commodity movement is defined. The coordination layer sits above both production and routing layers, shaping the rules, relationships, and infrastructure through which commodities flow. Entities operating at this layer define how the system works, not just what moves through it.",
+    "related_terms": ["coordination-node", "routing-power", "production-power"],
+    "platform_context": "This platform operates as a coordination layer over commodity intelligence itself — not reporting on the system, but defining how the system is understood."
+  },
+  {
+    "slug": "routing-power",
+    "term": "Routing Power",
+    "category": "framework",
+    "tier": "core",
+    "definition": "Strategic influence derived from the ability to control or significantly influence the pathways through which commodities move between producers and consumers. Routing power is exercised through control of maritime chokepoints, port infrastructure, pipeline networks, or logistical systems.",
+    "related_terms": ["production-power", "coordination-layer", "chokepoint"],
+    "platform_context": "Routing Power ≠ Production Power. This distinction is the foundational thesis of this platform's interpretive framework."
+  },
+  {
+    "slug": "production-power",
+    "term": "Production Power",
+    "category": "framework",
+    "tier": "core",
+    "definition": "Strategic influence derived from ownership or control of commodity production — oil fields, mineral deposits, agricultural land, or manufacturing capacity. The historically dominant form of commodity power, now increasingly subordinate to routing and coordination power in the modern global system.",
+    "related_terms": ["routing-power", "coordination-layer"],
+    "platform_context": "Saudi Arabia, Qatar, and Indonesia are examples of production power. Their strategic position derives from what they extract, not from what they organize."
+  },
+  {
+    "slug": "maritime-chokepoint",
+    "term": "Maritime Chokepoint",
+    "category": "infrastructure",
+    "tier": "core",
+    "definition": "A narrow passage of water through which a disproportionately large share of global maritime trade must pass, making it a point of strategic vulnerability and leverage. Control of, proximity to, or disruption of a maritime chokepoint has systemic consequences for global commodity flows.",
+    "related_terms": ["strait-of-malacca", "routing-power", "flow-stabilization"],
+    "platform_context": "The Strait of Malacca is the defining chokepoint for Singapore's strategic position. Approximately 40% of global trade passes through it annually."
+  },
+  {
+    "slug": "strait-of-malacca",
+    "term": "Strait of Malacca",
+    "category": "geography",
+    "tier": "core",
+    "definition": "The narrow maritime passage between the Malay Peninsula and the Indonesian island of Sumatra, connecting the Indian Ocean to the South China Sea. One of the world's most strategically critical maritime chokepoints, through which approximately 80,000 vessels pass annually, carrying around 40% of global seaborne trade.",
+    "related_terms": ["maritime-chokepoint", "routing-power", "coordination-node"],
+    "platform_context": "The Strait of Malacca defines Singapore's geographic irreplaceability. Any commodity moving between the Middle East and East Asia must navigate this passage."
+  },
+  {
+    "slug": "flow-stabilization",
+    "term": "Flow Stabilization",
+    "category": "framework",
+    "tier": "secondary",
+    "definition": "The capacity of a node or system to absorb supply and demand volatility, preventing disruptions from cascading through the commodity system. Flow stabilization requires physical storage infrastructure, financial instruments for hedging, and institutional relationships that enable rapid response to market dislocations.",
+    "related_terms": ["coordination-node", "routing-power", "bunkering"],
+    "platform_context": "Flow stabilization is one of Singapore's four core coordination capabilities alongside routing intelligence, logistical density, and trade structuring."
+  },
+  {
+    "slug": "bunkering",
+    "term": "Bunkering",
+    "category": "maritime",
+    "tier": "core",
+    "definition": "The supply of fuel to ships for their own use. Ship bunkering is a critical maritime service that enables vessels to complete long-distance voyages. The world's largest bunkering ports serve as essential infrastructure nodes in the global commodity supply chain, as no vessel can move commodities without fuel.",
+    "related_terms": ["maritime-chokepoint", "flow-stabilization", "coordination-node"],
+    "platform_context": "Singapore is the world's largest bunkering port by volume, handling over 50 million metric tonnes annually. This single fact illustrates how Singapore extracts power from logistical necessity."
+  },
+  {
+    "slug": "free-on-board",
+    "term": "Free on Board (FOB)",
+    "category": "trade-terms",
+    "tier": "secondary",
+    "definition": "A trade term indicating that the seller delivers the commodity to a named loading port and the buyer assumes all costs and risks from that point forward. FOB pricing represents the value of a commodity at its point of origin, before maritime transportation costs are added.",
+    "related_terms": ["cost-insurance-freight", "trade-structuring"],
+    "platform_context": "FOB vs. CIF price differentials reveal the value captured by maritime transportation and insurance — the economic domain where Singapore operates."
+  },
+  {
+    "slug": "cost-insurance-freight",
+    "term": "Cost, Insurance and Freight (CIF)",
+    "category": "trade-terms",
+    "tier": "secondary",
+    "definition": "A trade term indicating that the seller is responsible for the cost of the commodity, marine insurance, and freight charges to a named destination port. CIF pricing embeds the cost of maritime movement, making it higher than FOB prices by the margin captured by shipping and insurance services.",
+    "related_terms": ["free-on-board", "trade-structuring"],
+    "platform_context": "The spread between FOB and CIF prices represents the economic value created by the maritime coordination system in which Singapore plays a central role."
+  },
+  {
+    "slug": "spot-market",
+    "term": "Spot Market",
+    "category": "markets",
+    "tier": "secondary",
+    "definition": "A market in which commodities are bought and sold for immediate delivery, with settlement typically within two days to one month. Spot markets provide price transparency and allow buyers and sellers to respond to current supply and demand conditions without long-term contractual commitments.",
+    "related_terms": ["futures-market", "price-benchmark", "arbitrage"],
+    "platform_context": "Singapore hosts major spot markets for fuel oil, naphtha, and jet fuel under the MOPS (Mean of Platts Singapore) benchmark system."
+  },
+  {
+    "slug": "futures-market",
+    "term": "Futures Market",
+    "category": "markets",
+    "tier": "secondary",
+    "definition": "A market in which standardized contracts for the future delivery of commodities are traded. Futures markets allow producers and consumers to hedge price risk and enable speculative activity. The price discovery function of futures markets often anchors physical commodity trading.",
+    "related_terms": ["spot-market", "price-benchmark", "hedging"],
+    "platform_context": "SGX (Singapore Exchange) operates futures markets for iron ore, rubber, and Asian freight, reinforcing Singapore's role in commodity price formation."
+  },
+  {
+    "slug": "price-benchmark",
+    "term": "Price Benchmark",
+    "category": "markets",
+    "tier": "core",
+    "definition": "A reference price for a commodity that serves as the basis for physical trade contracts and financial derivatives. Benchmarks are typically published by price-reporting agencies and reflect actual transaction data. Control of benchmark creation is a significant form of market power.",
+    "related_terms": ["spot-market", "futures-market", "mops"],
+    "platform_context": "MOPS (Mean of Platts Singapore) is Asia's primary oil products benchmark. Brent is London's crude benchmark. Benchmark ownership = price power."
+  },
+  {
+    "slug": "mops",
+    "term": "MOPS (Mean of Platts Singapore)",
+    "category": "markets",
+    "tier": "core",
+    "definition": "The primary price benchmark for refined petroleum products in Asia, published by S&P Global Platts. MOPS prices are calculated as the average of assessed bid and offer prices in the Singapore market during the Platts Market on Close assessment process. Most Asian fuel oil, naphtha, gasoil, and jet fuel contracts reference MOPS.",
+    "related_terms": ["price-benchmark", "spot-market"],
+    "platform_context": "MOPS is one of Singapore's most powerful invisible assets. By hosting the price assessment process, Singapore defines the price of oil products for the entire Asian market."
+  },
+  {
+    "slug": "arbitrage",
+    "term": "Arbitrage",
+    "category": "markets",
+    "tier": "secondary",
+    "definition": "The simultaneous purchase and sale of the same commodity in different markets to profit from price differences. In commodity markets, arbitrage involves moving physical cargoes between geographic markets when price differentials exceed transportation and transaction costs, performing a price equalization function.",
+    "related_terms": ["spot-market", "routing-power", "price-benchmark"],
+    "platform_context": "Singapore traders are among the world's most sophisticated commodity arbitrageurs, exploiting price differences between Middle Eastern, European, and Asian markets through their routing and logistical capabilities."
+  },
+  {
+    "slug": "hedging",
+    "term": "Hedging",
+    "category": "markets",
+    "tier": "secondary",
+    "definition": "A risk management strategy using financial instruments to offset potential losses from adverse commodity price movements. Commodity producers, consumers, and traders use hedging to protect profit margins against price volatility, typically through futures contracts, options, or swaps.",
+    "related_terms": ["futures-market", "price-benchmark", "trade-structuring"],
+    "platform_context": "The depth of Singapore's hedging market is a key attraction for commodity companies. Effective hedging requires liquid markets — which Singapore's financial infrastructure provides."
+  },
+  {
+    "slug": "trade-structuring",
+    "term": "Trade Structuring",
+    "category": "framework",
+    "tier": "secondary",
+    "definition": "The design and implementation of complex contractual, financial, and logistical arrangements that enable large-scale commodity transactions. Trade structuring encompasses contract design, financing arrangements, risk allocation, regulatory compliance, and the coordination of multiple counterparties across different jurisdictions.",
+    "related_terms": ["coordination-node", "financial-structuring", "geneva"],
+    "platform_context": "Geneva is the world capital of commodity trade structuring. Singapore provides the operational infrastructure that Geneva-structured deals require."
+  },
+  {
+    "slug": "port-congestion",
+    "term": "Port Congestion",
+    "category": "logistics",
+    "tier": "secondary",
+    "definition": "A situation in which vessels waiting to enter a port or berth for loading/unloading exceed port capacity, causing delays and increased costs. Port congestion propagates through commodity supply chains, affecting prices, insurance costs, and delivery schedules. Strategic reserve capacity is a key differentiator for major port nodes.",
+    "related_terms": ["bunkering", "flow-stabilization", "maritime-chokepoint"],
+    "platform_context": "Singapore's port efficiency — measured by turnaround times — is a key competitive advantage. Low congestion enables fast commodity movement, enhancing Singapore's value as a coordination node."
+  },
+  {
+    "slug": "storage-tank-farm",
+    "term": "Storage Tank Farm",
+    "category": "infrastructure",
+    "tier": "secondary",
+    "definition": "A group of large tanks used for the storage of liquid commodities, particularly petroleum products. Tank farms are critical infrastructure for commodity trading, enabling the physical accumulation and redistribution of supply, time arbitrage, and blending operations.",
+    "related_terms": ["flow-stabilization", "rotterdam", "bunkering"],
+    "platform_context": "Rotterdam and Fujairah host the world's largest oil product storage complexes. Singapore's Jurong Island storage capacity supports its refining and trading operations."
+  },
+  {
+    "slug": "contango",
+    "term": "Contango",
+    "category": "markets",
+    "tier": "advanced",
+    "definition": "A market structure in which futures prices are higher than spot prices, reflecting the cost of storing a commodity over time. Contango incentivizes physical storage of commodities as traders can profit by buying spot and selling forward. Deep contango markets drive demand for storage infrastructure.",
+    "related_terms": ["futures-market", "storage-tank-farm", "arbitrage"],
+    "platform_context": "During periods of deep contango, Singapore's storage capacity becomes a profit center for traders who buy spot cargoes and lock in forward sales — illustrating how financial structure drives physical flows."
+  },
+  {
+    "slug": "backwardation",
+    "term": "Backwardation",
+    "category": "markets",
+    "tier": "advanced",
+    "definition": "A market structure in which spot prices are higher than futures prices, typically reflecting immediate supply tightness. Backwardation discourages storage and incentivizes rapid delivery of commodities to market. Strongly backwardated markets signal current supply stress in the commodity system.",
+    "related_terms": ["contango", "futures-market", "spot-market"],
+    "platform_context": "Backwardation in LNG markets signals tight supply in Asia — a condition that makes Singapore's routing and storage infrastructure more critical for emergency redistribution."
+  },
+  {
+    "slug": "lng-regasification",
+    "term": "LNG Regasification",
+    "category": "energy",
+    "tier": "secondary",
+    "definition": "The process of converting liquefied natural gas back to its gaseous state for distribution through pipelines. Regasification terminals are critical infrastructure in the LNG supply chain, enabling the conversion of internationally traded LNG into domestically usable natural gas.",
+    "related_terms": ["lng-liquefaction", "floating-storage-regasification-unit"],
+    "platform_context": "Singapore's Pavilion Gas terminal on Jurong Island is Singapore's primary LNG import and regasification facility — the physical expression of Singapore's LNG coordination role."
+  },
+  {
+    "slug": "floating-storage-regasification-unit",
+    "term": "Floating Storage and Regasification Unit (FSRU)",
+    "category": "energy",
+    "tier": "advanced",
+    "definition": "A vessel that can store liquefied natural gas and convert it back to gas for delivery to onshore pipelines. FSRUs provide flexible and lower-cost alternatives to fixed onshore regasification terminals, enabling markets to access LNG supplies without major infrastructure investments.",
+    "related_terms": ["lng-regasification", "flow-stabilization"],
+    "platform_context": "FSRUs are increasingly used in Southeast Asia for new LNG import markets — often chartered and managed by Singapore-based energy companies."
+  },
+  {
+    "slug": "commodity-trading-house",
+    "term": "Commodity Trading House",
+    "category": "institutions",
+    "tier": "core",
+    "definition": "A company specializing in the buying, selling, and physical movement of commodities. Large trading houses operate globally, taking on price risk and managing complex logistics across multiple commodity types. The largest — Vitol, Trafigura, Glencore, Gunvor, Mercuria — are headquartered in Geneva or Singapore.",
+    "related_terms": ["trade-structuring", "arbitrage", "geneva"],
+    "platform_context": "Singapore hosts the Asian operations of all major commodity trading houses, plus independent regional firms. Their physical presence is evidence of Singapore's role as the operational center of Asian commodity trade."
+  },
+  {
+    "slug": "price-reporting-agency",
+    "term": "Price Reporting Agency (PRA)",
+    "category": "institutions",
+    "tier": "secondary",
+    "definition": "An organization that collects, assesses, and publishes prices for physical commodity markets. Major PRAs include S&P Global Platts, Argus Media, and ICIS. PRA benchmarks become reference prices in physical contracts and derivatives, giving these agencies significant influence over market pricing.",
+    "related_terms": ["price-benchmark", "mops", "spot-market"],
+    "platform_context": "Platts operates a major assessment office in Singapore, conducting the MOPS process that prices Asian oil products. The physical presence of PRAs in a city confers pricing legitimacy."
+  },
+  {
+    "slug": "free-trade-zone",
+    "term": "Free Trade Zone (FTZ)",
+    "category": "institutions",
+    "tier": "secondary",
+    "definition": "A designated geographic area where goods can be landed, handled, manufactured or reconfigured, and re-exported with minimal customs formalities and often with reduced or eliminated duties. FTZs facilitate commodity trading by reducing transaction costs and enabling bonded storage.",
+    "related_terms": ["storage-tank-farm", "coordination-node"],
+    "platform_context": "Jurong Island and Singapore's FTZ designation enable commodity traders to handle, blend, and re-export products without triggering Singapore customs duties — a key element of Singapore's competitive advantage."
+  },
+  {
+    "slug": "demurrage",
+    "term": "Demurrage",
+    "category": "maritime",
+    "tier": "secondary",
+    "definition": "A charge payable to a ship owner when the cargo is not loaded or unloaded within the agreed time frame. Demurrage represents a direct cost of operational inefficiency at ports and loading terminals. Minimizing demurrage through efficient port operations is a key competitive advantage for commodity hubs.",
+    "related_terms": ["bunkering", "port-congestion"],
+    "platform_context": "Singapore's fast port turnaround and sophisticated berth management minimize demurrage costs for commodity traders, making it more economical to route cargoes through Singapore."
+  },
+  {
+    "slug": "commodity-index",
+    "term": "Commodity Index",
+    "category": "markets",
+    "tier": "secondary",
+    "definition": "A financial instrument that tracks the performance of a basket of commodity prices. Major commodity indices include the S&P GSCI, Bloomberg Commodity Index, and Rogers International Commodity Index. Commodity indices provide benchmarks for investors and highlight the relative importance of different commodity markets.",
+    "related_terms": ["price-benchmark", "futures-market"],
+    "platform_context": "Energy commodities — particularly crude oil — dominate major commodity indices, reflecting the central importance of energy in global commodity systems."
+  },
+  {
+    "slug": "derivatives",
+    "term": "Derivatives",
+    "category": "markets",
+    "tier": "secondary",
+    "definition": "Financial contracts whose value is derived from an underlying commodity price. Common commodity derivatives include futures, options, swaps, and forwards. Derivatives markets allow price risk transfer between producers, consumers, and financial investors without requiring physical commodity exchange.",
+    "related_terms": ["futures-market", "hedging", "price-benchmark"],
+    "platform_context": "SGX's commodity derivatives platform allows Asian commodity participants to manage price risk using Singapore-regulated contracts, reinforcing Singapore's role as a financial coordination center."
+  },
+  {
+    "slug": "crack-spread",
+    "term": "Crack Spread",
+    "category": "markets",
+    "tier": "advanced",
+    "definition": "The differential between the price of crude oil and the price of refined petroleum products derived from it. The crack spread represents the theoretical refining margin and is used to assess the profitability of refining operations. A wide crack spread incentivizes higher refinery utilization.",
+    "related_terms": ["crude-oil", "naphtha", "gasoil-diesel", "mops"],
+    "platform_context": "Singapore refiners closely monitor crack spreads when scheduling refinery runs and managing the trade-off between processing crude oil and purchasing refined products."
+  },
+  {
+    "slug": "suezmax",
+    "term": "Suezmax",
+    "category": "maritime",
+    "tier": "secondary",
+    "definition": "A vessel size class for oil tankers, defined as the largest vessel that can transit the Suez Canal fully loaded. Suezmax tankers typically have a capacity of 120,000–200,000 DWT and are commonly used for crude oil and refined products movements in the Atlantic Basin and between the Middle East and Europe.",
+    "related_terms": ["vlcc", "maritime-chokepoint", "routing-power"],
+    "platform_context": "Tanker size classes determine the economics of commodity routing. The choice between VLCC, Suezmax, and Aframax routing reveals the cost structures of different maritime commodity flows."
+  },
+  {
+    "slug": "vlcc",
+    "term": "VLCC (Very Large Crude Carrier)",
+    "category": "maritime",
+    "tier": "secondary",
+    "definition": "The largest class of oil tanker commonly used in international crude oil trade, with a capacity of 200,000–320,000 DWT. VLCCs are typically used on long-haul routes between the Middle East Gulf and Asia or the US Gulf Coast, where economies of scale justify the investment in large vessel deployment.",
+    "related_terms": ["suezmax", "maritime-chokepoint", "routing-power"],
+    "platform_context": "VLCCs too large to transit the Strait of Malacca fully loaded must navigate around Singapore via the Lombok or Sunda Straits — creating routing cost differentials that Singapore's traders exploit."
+  },
+  {
+    "slug": "lng-spot-cargo",
+    "term": "LNG Spot Cargo",
+    "category": "energy",
+    "tier": "secondary",
+    "definition": "A single shipment of liquefied natural gas sold at current market prices, as opposed to contracted under long-term supply agreements. The growth of LNG spot trading has transformed the LNG market from bilateral long-term contracts toward a more liquid, flexible global market.",
+    "related_terms": ["jkm", "spot-market", "lng-regasification"],
+    "platform_context": "Singapore-based LNG traders are major participants in the Asian LNG spot market, using Singapore's financial infrastructure to hedge JKM price exposure."
+  },
+  {
+    "slug": "jkm",
+    "term": "JKM (Japan/Korea Marker)",
+    "category": "energy",
+    "tier": "secondary",
+    "definition": "The primary LNG price benchmark for the spot market in Northeast Asia, published by S&P Global Platts. JKM reflects the price for LNG delivered to Japan or Korea on a spot basis and has become the reference price for a growing share of Asian LNG contracts and financial derivatives.",
+    "related_terms": ["mops", "price-benchmark", "lng-spot-cargo"],
+    "platform_context": "JKM is assessed in Singapore through Platts' assessment process, reinforcing Singapore's role in Asian LNG price formation even for cargoes destined for Japan and Korea."
+  },
+  {
+    "slug": "energy-transition",
+    "term": "Energy Transition",
+    "category": "strategic",
+    "tier": "secondary",
+    "definition": "The global shift from fossil fuel-based energy systems toward renewable and low-carbon energy sources. The energy transition is reshaping commodity demand patterns, creating new flows of energy commodities (ammonia, hydrogen, critical minerals) while gradually reducing demand for traditional fossil fuels.",
+    "related_terms": ["ammonia", "green-hydrogen", "coordination-node"],
+    "platform_context": "Singapore is actively positioning for the energy transition, developing LNG bunkering, ammonia import infrastructure, and carbon market capabilities to maintain its coordination role in a decarbonizing energy system."
+  },
+  {
+    "slug": "green-hydrogen",
+    "term": "Green Hydrogen",
+    "category": "energy",
+    "tier": "secondary",
+    "definition": "Hydrogen produced through electrolysis of water using renewable electricity, resulting in no direct carbon dioxide emissions. Green hydrogen is a key potential carrier of renewable energy for hard-to-decarbonize sectors such as shipping, steel, and chemicals.",
+    "related_terms": ["ammonia", "energy-transition"],
+    "platform_context": "Singapore's Low Carbon Energy Research program is developing green hydrogen and ammonia import capabilities. Singapore aims to import 35% of its energy needs as low-carbon hydrogen by 2035."
+  },
+  {
+    "slug": "carbon-credit",
+    "term": "Carbon Credit",
+    "category": "markets",
+    "tier": "secondary",
+    "definition": "A tradeable certificate representing the right to emit one metric tonne of carbon dioxide or equivalent greenhouse gas. Carbon credits can be generated through emissions reduction projects or allocated under cap-and-trade systems, and are used by companies to offset emissions they cannot eliminate.",
+    "related_terms": ["energy-transition", "coordination-node"],
+    "platform_context": "Singapore is developing Climate Impact X (CIX), a global carbon exchange and marketplace, positioning Singapore as a coordination node for the emerging global carbon market."
+  },
+  {
+    "slug": "commodity-finance",
+    "term": "Commodity Finance",
+    "category": "finance",
+    "tier": "secondary",
+    "definition": "Specialized financing for the production, processing, transportation, and trading of physical commodities. Commodity finance structures include pre-export finance, borrowing base facilities, reserve-based lending, and trade receivables financing. Major commodity finance banks are concentrated in London, Geneva, Singapore, and Hong Kong.",
+    "related_terms": ["trade-structuring", "commodity-trading-house"],
+    "platform_context": "Singapore's banking sector — DBS, OCBC, UOB, and international banks — provides commodity finance to Asian trade flows. The scale of this lending underpins Singapore's position as a commodity coordination hub."
+  },
+  {
+    "slug": "aframax",
+    "term": "Aframax",
+    "category": "maritime",
+    "tier": "advanced",
+    "definition": "A medium-sized oil tanker class with a capacity of 80,000–120,000 DWT, named after the Average Freight Rate Assessment (AFRA) tanker rate system. Aframax tankers are well-suited for regional trade within the Asia-Pacific and can fully load in the Strait of Malacca, making them the workhorse of Southeast Asian crude movements.",
+    "related_terms": ["vlcc", "suezmax", "strait-of-malacca"],
+    "platform_context": "Aframax tankers dominate the Singapore strait traffic because their size optimally balances cargo economics with the physical constraints of the Strait of Malacca."
+  },
+  {
+    "slug": "physical-premium",
+    "term": "Physical Premium / Differential",
+    "category": "markets",
+    "tier": "advanced",
+    "definition": "The difference between the price of a specific physical commodity and the benchmark price for that commodity class. Physical premiums or discounts reflect factors such as quality, delivery location, logistical costs, and supply-demand balance for the specific grade or location.",
+    "related_terms": ["price-benchmark", "spot-market", "mops"],
+    "platform_context": "Singapore physical premiums for naphtha and fuel oil reflect the locational advantage of Singapore as a cargo delivery point for Asian refiners and blenders."
+  }
+]

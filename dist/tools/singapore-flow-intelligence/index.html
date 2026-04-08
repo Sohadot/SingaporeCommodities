@@ -8,6 +8,7 @@
   <meta name="generator" content="Singapore Commodities Sovereign Build System">
   <meta name="theme-color" content="#05070D">
 
+
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
   <title>Singapore Flow Intelligence Explorer | Singapore Commodities</title>
@@ -116,6 +117,22 @@
         </li>
         <li class="nav-item">
           <a
+            href="/nodes/"
+            class="nav-link"
+>
+            Nodes
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="/commodities/"
+            class="nav-link"
+>
+            Commodities
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
             href="/articles/"
             class="nav-link"
 >
@@ -128,6 +145,14 @@
             class="nav-link"
 >
             Chronicles
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="/glossary/"
+            class="nav-link"
+>
+            Glossary
           </a>
         </li>
         <li class="nav-item">
@@ -170,15 +195,15 @@
     <aside class="content-sidepanel" aria-label="Tool profile">
       <article class="context-card">
         <p class="context-kicker">Type</p>
-        <p class="context-value">Interpretive interface</p>
+        <p class="context-value">Strategic Tool</p>
       </article>
       <article class="context-card">
-        <p class="context-kicker">Mode</p>
-        <p class="context-value">Analytical assistance</p>
+        <p class="context-kicker">Methodology</p>
+        <p class="context-value">Human-curated. No AI. No external API.</p>
       </article>
       <article class="context-card">
-        <p class="context-kicker">Future role</p>
-        <p class="context-value">Dynamic strategic instrumentation</p>
+        <p class="context-kicker">Data Sovereignty</p>
+        <p class="context-value">All data is local. No third-party dependency.</p>
       </article>
     </aside>
   </div>
@@ -198,9 +223,11 @@
           <label for="tool-commodity" class="tool-label">Commodity</label>
           <select id="tool-commodity" class="tool-control">
             <option value="lng">LNG</option>
-            <option value="oil">Oil</option>
+            <option value="oil">Crude Oil</option>
             <option value="bunkering">Bunkering Fuel</option>
-            <option value="metals">Metals</option>
+            <option value="fuel-oil">Fuel Oil</option>
+            <option value="naphtha">Naphtha</option>
+            <option value="metals">Industrial Metals</option>
             <option value="agriculture">Agriculture</option>
           </select>
         </div>
@@ -208,10 +235,11 @@
         <div class="tool-field">
           <label for="tool-function" class="tool-label">Interpretive Function</label>
           <select id="tool-function" class="tool-control">
-            <option value="routing">Routing</option>
-            <option value="coordination">Coordination</option>
-            <option value="stabilization">Stabilization</option>
+            <option value="routing">Routing Logic</option>
+            <option value="coordination">Coordination Capacity</option>
+            <option value="stabilization">Flow Stabilization</option>
             <option value="strategic-relevance">Strategic Relevance</option>
+            <option value="pricing">Price Formation</option>
           </select>
         </div>
 
@@ -219,8 +247,8 @@
           <button type="button" class="button button-primary" id="tool-analyze-button">Analyze</button>
         </div>
 
-        <div class="tool-result" id="tool-result" aria-live="polite">
-          Select a commodity and an interpretive function to generate a structured analytical prompt surface.
+        <div class="tool-result" id="tool-result" role="region" aria-live="polite" aria-label="Analysis output">
+          Select a commodity and an interpretive function to generate a structured analytical output.
         </div>
       </div>
     </article>
@@ -228,13 +256,13 @@
     <aside class="content-rail" aria-label="Tool guidance">
 
       <article class="detail-card">
-        <h3 class="detail-title">Current state</h3>
-        <p class="detail-value">Reference-grade interface</p>
+        <h3 class="detail-title">Methodology</h3>
+        <p class="detail-value">Human-curated interpretation. No algorithmic output. No external data dependency.</p>
       </article>
 
       <article class="detail-card">
-        <h3 class="detail-title">Target evolution</h3>
-        <p class="detail-value">Dynamic market-linked tooling</p>
+        <h3 class="detail-title">Reference framework</h3>
+        <p class="detail-value">All outputs are anchored to the Routing Power vs. Production Power analytical framework.</p>
       </article>
     </aside>
   </div>
@@ -257,6 +285,7 @@
     </div>
   </div>
 </section>
+
   </main>
 
 <footer class="site-footer" role="contentinfo">
@@ -285,10 +314,19 @@
           <a class="footer-link" href="/framework/">Framework</a>
         </li>
         <li>
+          <a class="footer-link" href="/nodes/">Nodes</a>
+        </li>
+        <li>
+          <a class="footer-link" href="/commodities/">Commodities</a>
+        </li>
+        <li>
           <a class="footer-link" href="/articles/">Articles</a>
         </li>
         <li>
           <a class="footer-link" href="/chronicles/">Chronicles</a>
+        </li>
+        <li>
+          <a class="footer-link" href="/glossary/">Glossary</a>
         </li>
         <li>
           <a class="footer-link" href="/guide/">Guide</a>
@@ -314,5 +352,6 @@
     <p class="footer-meta">Version 1.0.0</p>
   </div>
 </footer>
+
 </body>
 </html>

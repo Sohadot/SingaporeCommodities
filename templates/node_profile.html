@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block body_class %}node-profile-body{% endblock %}
+
+{% block content %}
+<section class="content-hero content-hero-node" aria-labelledby="node-title">
+  <div class="shell content-hero-grid">
+    <div class="content-hero-copy">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/nodes/">Global Nodes</a></li>
+          <li class="breadcrumb-item" aria-current="page">{{ node.name }}</li>
+        </ol>
+      </nav>
+
+      <p class="eyebrow">{{ node.region }} — {{ node.layer }} Node</p>
+
+      <h1 id="node-title" class="content-title">{{ node.name }}</h1>
+
+      <p class="lead content-lead">{{ node.primary_function }}</p>
+
+      {% if node.tagline %}
+      <blockquote class="node-tagline">
+        <p>"{{ node.tagline }}"</p>
+      </blockquote>
+      {% endif %}
+    </div>
+
+    <aside class="content-sidepanel" aria-label="Node profile">
+      <article class="context-card">
+        <p class="context-kicker">Layer</p>
+        <p class="context-value">{{ node.layer }}</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">Region</p>
+        <p class="context-value">{{ node.region }}</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">Composite Score</p>
+        <p class="context-value">{{ node.composite_score }} / 100</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">Power Index</p>
+        <p class="context-value"><a href="/tools/node-power-index/" class="context-link">Analyze this node →</a></p>
+      </article>
+    </aside>
+  </div>
+</section>
+
+{% if node.power_scores %}
+<section class="section-block section-block-surface" aria-labelledby="scores-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Power Assessment</p>
+      <h2 id="scores-title" class="section-title">Eight-dimension power profile</h2>
+    </div>
+
+    <div class="card-grid card-grid-4">
+      {% set dimension_labels = {
+        "maritime_routing": "Maritime Routing",
+        "financial_structuring": "Financial Structuring",
+        "storage_logistics": "Storage & Logistics",
+        "commodity_transformation": "Transformation",
+        "price_formation": "Price Formation",
+        "regulatory_framework": "Regulatory Framework",
+        "strategic_location": "Strategic Location",
+        "trade_finance": "Trade Finance"
+      } %}
+      {% for key, score in node.power_scores.items() %}
+      <article class="detail-card detail-card-score">
+        <h3 class="detail-title">{{ dimension_labels.get(key, key | replace("_", " ") | title) }}</h3>
+        <p class="detail-score">{{ score }}<span class="detail-score-max">/10</span></p>
+        <div class="score-bar-track">
+          <div class="score-bar-fill" style="width:{{ score * 10 }}%"></div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if node.narrative %}
+<section class="section-block" aria-labelledby="narrative-title">
+  <div class="shell narrow-shell">
+    <div class="section-heading">
+      <p class="section-kicker">Strategic Interpretation</p>
+      <h2 id="narrative-title" class="section-title">How {{ node.name }} derives commodity power</h2>
+    </div>
+    <div class="body-copy body-copy-large">
+      <p>{{ node.narrative }}</p>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<div class="shell">
+  <div class="two-col-data">
+    {% if node.key_commodities %}
+    <section class="section-block" aria-labelledby="commodities-title">
+      <div class="section-heading">
+        <p class="section-kicker">Key Commodities</p>
+        <h2 id="commodities-title" class="section-title">Primary commodity domains</h2>
+      </div>
+      <div class="tag-list">
+        {% for commodity in node.key_commodities %}
+        <a href="/commodities/{{ commodity | lower | replace(" ", "-") }}/" class="tag-item">{{ commodity }}</a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if node.key_institutions %}
+    <section class="section-block" aria-labelledby="institutions-title">
+      <div class="section-heading">
+        <p class="section-kicker">Key Institutions</p>
+        <h2 id="institutions-title" class="section-title">Institutional infrastructure</h2>
+      </div>
+      <ul class="detail-list">
+        {% for institution in node.key_institutions %}
+        <li class="detail-list-item">{{ institution }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  </div>
+</div>
+
+{% if node.key_benchmarks %}
+<section class="section-block section-block-surface" aria-labelledby="benchmarks-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Price Benchmarks</p>
+      <h2 id="benchmarks-title" class="section-title">Market reference standards</h2>
+    </div>
+    <div class="card-grid card-grid-3">
+      {% for benchmark in node.key_benchmarks %}
+      <article class="detail-card">
+        <h3 class="detail-title">{{ "%02d"|format(loop.index) }}</h3>
+        <p class="detail-value">{{ benchmark }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section-block" aria-labelledby="index-cta-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Analytical Tools</p>
+      <h2 id="index-cta-title" class="section-title">Assess and compare this node</h2>
+    </div>
+    <div class="nav-actions">
+      <a href="/tools/node-power-index/" class="button button-primary">Open Node Power Index</a>
+      <a href="/nodes/" class="button button-secondary">All Global Nodes</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
