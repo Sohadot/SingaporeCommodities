@@ -42,13 +42,20 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Determine build environment
+      - name: Determine build environment and branch
         id: build_env
         shell: bash
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo "environment=preview" >> "$GITHUB_OUTPUT"
-            echo "wrangler_branch=${{ github.head_ref }}" >> "$GITHUB_OUTPUT"
+            # Sanitize branch name: replace / and _ with - for Cloudflare Pages compatibility
+            RAW_BRANCH="${{ github.head_ref }}"
+            SAFE_BRANCH="${RAW_BRANCH//\//-}"
+            SAFE_BRANCH="${SAFE_BRANCH//_/-}"
+            # Cloudflare Pages branch names max 63 chars
+            SAFE_BRANCH="${SAFE_BRANCH:0:63}"
+            echo "wrangler_branch=${SAFE_BRANCH}" >> "$GITHUB_OUTPUT"
+            echo "Branch sanitized: ${RAW_BRANCH} → ${SAFE_BRANCH}"
           else
             echo "environment=production" >> "$GITHUB_OUTPUT"
             echo "wrangler_branch=main" >> "$GITHUB_OUTPUT"
@@ -71,30 +78,12 @@ jobs:
           path: dist/
           retention-days: 30
 
-      - name: Check Cloudflare secrets
-        id: check_secrets
-        shell: bash
-        run: |
-          if [[ -n "${{ secrets.CLOUDFLARE_API_TOKEN }}" && -n "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" ]]; then
-            echo "has_secrets=true" >> "$GITHUB_OUTPUT"
-            echo "✅ Cloudflare secrets found — deployment will proceed."
-          else
-            echo "has_secrets=false" >> "$GITHUB_OUTPUT"
-            echo "⚠️  Cloudflare secrets not configured."
-            echo "    To enable automatic deployment, add these secrets in GitHub:"
-            echo "    Settings → Secrets and variables → Actions → New repository secret"
-            echo "    • CLOUDFLARE_API_TOKEN  (from Cloudflare dashboard → API Tokens)"
-            echo "    • CLOUDFLARE_ACCOUNT_ID (from Cloudflare dashboard → right sidebar)"
-          fi
-
       - name: Setup Node.js
-        if: steps.check_secrets.outputs.has_secrets == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Deploy to Cloudflare Pages
-        if: steps.check_secrets.outputs.has_secrets == 'true'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -112,5 +101,4 @@ jobs:
           echo "Environment : ${{ steps.build_env.outputs.environment }}"
           echo "Branch      : ${{ steps.build_env.outputs.wrangler_branch }}"
           echo "Commit      : ${{ github.sha }}"
-          echo "Deployed    : ${{ steps.check_secrets.outputs.has_secrets }}"
           echo "========================================"
