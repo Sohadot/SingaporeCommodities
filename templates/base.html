@@ -57,6 +57,17 @@
 
   <link rel="stylesheet" href="/assets/css/main.css">
   <script src="/assets/js/main.js" defer></script>
+
+  {% if site.ga4_id and is_production %}
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.ga4_id }}');
+  </script>
+  {% endif %}
 </head>
 <body class="{% block body_class %}{% if page.is_home %}is-home{% endif %}{% endblock %}">
   <a class="skip-link" href="#main-content">Skip to main content</a>
