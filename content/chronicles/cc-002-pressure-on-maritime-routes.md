@@ -1,13 +1,23 @@
-# CC-002 — Pressure on Maritime Routes
+---
+title: "Pressure on Maritime Routes"
+slug: "pressure-on-maritime-routes"
 
-March 2026 — As pressure mounts on key maritime corridors, the structural role of coordinating cities is moving from background assumption to visible strategic reality.
+type: "chronicle"
+layer: "observation"
 
-When maritime routes experience pressure, the strategic importance of coordinating cities becomes more visible.
+chronicle_code: "CC-002"
+date: "2026-04-08"
 
-Commodity movement depends on continuity. Even small disruptions in route logic, timing, or corridor stability can create wider consequences across trade systems. This is why maritime nodes matter so much.
+tags: ["maritime", "routes"]
 
-Singapore becomes especially relevant under such conditions because its strength lies in enabling movement through organization, support capacity, and logistical coherence.
+related_nodes: ["singapore"]
+related_commodities: ["oil", "lng"]
+---
 
-Route pressure reveals a fundamental truth: commodity power is not only stored in reserves, ports, or contracts. It also exists in the cities capable of absorbing complexity and translating it into continuity.
+As pressure mounts on key maritime corridors, the structural role of coordinating cities is moving from background assumption to visible strategic reality.
 
-Singapore is one of those cities.
+Commodity movement depends on continuity. Even small disruptions can create wider consequences across trade systems.
+
+Singapore becomes especially relevant under such conditions because its strength lies in enabling movement through organization and logistical coherence.
+
+Route pressure reveals that commodity power exists in the ability to maintain continuity under stress.
