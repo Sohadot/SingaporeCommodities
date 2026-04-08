@@ -94,7 +94,7 @@ jobs:
           echo "→ Dist contents:"
           ls dist/ | head -20
           npx wrangler@3 pages deploy dist \
-            --project-name=singapore-commodities \
+            --project-name=singaporecommodities \
             --branch="${{ steps.build_env.outputs.wrangler_branch }}" \
             --commit-hash="${{ github.sha }}"
 
