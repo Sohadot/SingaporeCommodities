@@ -1,4 +1,21 @@
-# How Singapore Organizes Commodity Flows
+---
+title: "How Singapore Organizes Commodity Flows"
+slug: "singapore-organizes-commodity-flows"
+
+type: "article"
+layer: "theory"
+category: "core-framework"
+
+date: "2026-04-08"
+reading_time: "5"
+
+description: "Explaining how Singapore structures and stabilizes commodity flows across maritime systems."
+
+tags: ["singapore", "flows", "logistics"]
+
+related_nodes: ["singapore"]
+related_commodities: ["oil", "lng"]
+---
 
 Commodity systems are often described as if they were simple exchanges between producer and consumer.
 
