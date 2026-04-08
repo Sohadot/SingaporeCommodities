@@ -18,5 +18,8 @@
     "address": "Singapore"
   },
   "analytics_id": null,
-  "version": "1.0.0"
+  "gtm_id": null,
+  "ga4_id": null,
+  "search_console_verification": null,
+  "version": "1.1.0"
 }

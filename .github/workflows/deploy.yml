@@ -37,18 +37,25 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Determine build environment
+      - name: Determine build environment and branch
         id: build_env
         shell: bash
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo "environment=preview" >> "$GITHUB_OUTPUT"
-            echo "wrangler_branch=${{ github.head_ref }}" >> "$GITHUB_OUTPUT"
+            # Sanitize branch name: replace / and _ with - for Cloudflare Pages compatibility
+            RAW_BRANCH="${{ github.head_ref }}"
+            SAFE_BRANCH="${RAW_BRANCH//\//-}"
+            SAFE_BRANCH="${SAFE_BRANCH//_/-}"
+            # Cloudflare Pages branch names max 63 chars
+            SAFE_BRANCH="${SAFE_BRANCH:0:63}"
+            echo "wrangler_branch=${SAFE_BRANCH}" >> "$GITHUB_OUTPUT"
+            echo "Branch sanitized: ${RAW_BRANCH} → ${SAFE_BRANCH}"
           else
             echo "environment=production" >> "$GITHUB_OUTPUT"
             echo "wrangler_branch=main" >> "$GITHUB_OUTPUT"
@@ -77,17 +84,26 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: >
-            pages deploy dist
-            --project-name=singapore-commodities
-            --branch=${{ steps.build_env.outputs.wrangler_branch }}
+        shell: bash
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          echo "→ Branch: ${{ steps.build_env.outputs.wrangler_branch }}"
+          echo "→ Environment: ${{ steps.build_env.outputs.environment }}"
+          echo "→ Dist contents:"
+          ls dist/ | head -20
+          npx wrangler@3 pages deploy dist \
+            --project-name=singaporecommodities \
+            --branch="${{ steps.build_env.outputs.wrangler_branch }}" \
+            --commit-hash="${{ github.sha }}"
 
       - name: Deployment summary
         run: |
-          echo "Environment: ${{ steps.build_env.outputs.environment }}"
-          echo "Branch: ${{ steps.build_env.outputs.wrangler_branch }}"
-          echo "Commit: ${{ github.sha }}"
+          echo "========================================"
+          echo "Build Summary"
+          echo "========================================"
+          echo "Environment : ${{ steps.build_env.outputs.environment }}"
+          echo "Branch      : ${{ steps.build_env.outputs.wrangler_branch }}"
+          echo "Commit      : ${{ github.sha }}"
+          echo "========================================"

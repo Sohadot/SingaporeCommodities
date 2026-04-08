@@ -16,6 +16,16 @@
       "position": 20
     },
     {
+      "title": "Nodes",
+      "url": "/nodes/",
+      "position": 25
+    },
+    {
+      "title": "Commodities",
+      "url": "/commodities/",
+      "position": 28
+    },
+    {
       "title": "Articles",
       "url": "/articles/",
       "position": 30
@@ -24,6 +34,11 @@
       "title": "Chronicles",
       "url": "/chronicles/",
       "position": 40
+    },
+    {
+      "title": "Glossary",
+      "url": "/glossary/",
+      "position": 45
     },
     {
       "title": "Guide",

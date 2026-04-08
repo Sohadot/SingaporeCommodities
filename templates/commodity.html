@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block body_class %}commodity-body{% endblock %}
+
+{% block content %}
+<section class="content-hero content-hero-commodity" aria-labelledby="commodity-title">
+  <div class="shell content-hero-grid">
+    <div class="content-hero-copy">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/commodities/">Commodities</a></li>
+          <li class="breadcrumb-item" aria-current="page">{{ commodity.short_name }}</li>
+        </ol>
+      </nav>
+
+      <p class="eyebrow">
+        {{ commodity.category | replace("-", " ") | title }} — Singapore Strategic Role
+      </p>
+
+      <h1 id="commodity-title" class="content-title">{{ commodity.name }}</h1>
+
+      <p class="lead content-lead">{{ commodity.narrative }}</p>
+    </div>
+
+    <aside class="content-sidepanel" aria-label="Commodity profile">
+      <article class="context-card">
+        <p class="context-kicker">Category</p>
+        <p class="context-value">{{ commodity.category | replace("-", " ") | title }}</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">Singapore Relevance</p>
+        <p class="context-value">{{ commodity.relevance | replace("_", " ") | title }}</p>
+      </article>
+      <article class="context-card">
+        <p class="context-kicker">System Role</p>
+        <p class="context-value">{{ commodity.system_role | replace("-", " ") | title }}</p>
+      </article>
+      {% if commodity.unit %}
+      <article class="context-card">
+        <p class="context-kicker">Unit</p>
+        <p class="context-value">{{ commodity.unit }}</p>
+      </article>
+      {% endif %}
+    </aside>
+  </div>
+</section>
+
+{% if commodity.key_markets %}
+<section class="section-block section-block-surface" aria-labelledby="markets-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Price Reference Markets</p>
+      <h2 id="markets-title" class="section-title">Where {{ commodity.short_name }} is priced</h2>
+    </div>
+    <div class="card-grid card-grid-3">
+      {% for market in commodity.key_markets %}
+      <article class="detail-card">
+        <h3 class="detail-title">{{ "%02d"|format(loop.index) }}</h3>
+        <p class="detail-value">{{ market }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if commodity.singapore_function %}
+<section class="section-block" aria-labelledby="function-title">
+  <div class="shell narrow-shell">
+    <div class="section-heading">
+      <p class="section-kicker">Singapore's Function</p>
+      <h2 id="function-title" class="section-title">How Singapore organizes {{ commodity.short_name }} flows</h2>
+    </div>
+    <div class="body-copy body-copy-large">
+      <p>Singapore's primary function in {{ commodity.name }} markets is <strong>{{ commodity.singapore_function | replace("-", " ") }}</strong> — operating as a coordination layer above physical production and consumption.</p>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section-block section-block-surface" aria-labelledby="framework-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Analytical Framework</p>
+      <h2 id="framework-title" class="section-title">Understanding {{ commodity.short_name }} through the coordination lens</h2>
+    </div>
+    <div class="body-copy">
+      <p>In the context of Singapore's coordination model, {{ commodity.name }} is not analyzed through production statistics or consumption volumes alone. The critical variable is <em>how movement is organized</em> — which node coordinates the flow, which benchmark prices the transaction, and which infrastructure ensures continuity.</p>
+      <p>Singapore's role in {{ commodity.name }} markets reflects the platform's core thesis: power derives from coordination capacity, not from ownership of the commodity itself.</p>
+    </div>
+    <div class="nav-actions" style="margin-top:var(--space-6)">
+      <a href="/framework/" class="button button-secondary">Read the Framework</a>
+      <a href="/tools/node-power-index/" class="button button-secondary">Use Node Power Index</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

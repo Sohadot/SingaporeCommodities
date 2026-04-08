@@ -21,6 +21,7 @@ import yaml
 
 from scripts.content_loader import ContentLoader
 from scripts.copy_assets import AssetCopier
+from scripts.generate_data_pages import DataPageGenerator
 from scripts.generate_robots import RobotsGenerator
 from scripts.generate_rss import RSSGenerator
 from scripts.generate_schema import SchemaGenerator
@@ -63,6 +64,9 @@ class BuildSystem:
         self.content_loader = ContentLoader(self.data_dir, self.logger)
         self.renderer = PageRenderer(self.templates_dir, self.dist_dir, self.logger)
         self.schema_generator = SchemaGenerator()
+        self.data_page_generator = DataPageGenerator(
+            self.data_dir, self.templates_dir, self.dist_dir, self.logger
+        )
 
         self.build_timestamp = datetime.now(timezone.utc)
         self.git_commit = self._get_git_value(["git", "rev-parse", "--short", "HEAD"])
@@ -169,6 +173,13 @@ class BuildSystem:
                 navigation=navigation,
                 environment=self.environment,
             )
+
+            data_pages = self.data_page_generator.generate_all(
+                site_data=site_data,
+                navigation=navigation,
+                environment=self.environment,
+            )
+            generated_pages.extend(data_pages)
 
             self._validate_generated_pages_against_contract(
                 generated_pages=generated_pages,
