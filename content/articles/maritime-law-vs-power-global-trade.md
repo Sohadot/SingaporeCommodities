@@ -52,6 +52,10 @@ Without it, flows do not stop — but they become volatile, expensive, and struc
 
 ## Chokepoints: Where Theory Meets Reality
 
+![Maritime chokepoints routing map showing Hormuz and Malacca energy flows](/assets/images/maritime-chokepoints-routing-map.webp)
+
+*Global maritime routing constraints highlighting the strategic role of chokepoints such as Hormuz and the Straits of Malacca and Singapore.*
+
 Consider two critical maritime passages:
 
 - The Strait of Hormuz (~21 nautical miles at its narrowest shipping lane)
