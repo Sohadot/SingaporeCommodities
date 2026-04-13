@@ -5,9 +5,9 @@ type: article
 layer: theory
 category: core-framework
 date: 2026-04-15
-reading_time: 9
+reading_time: "9"
 description: "An institutional analysis of how maritime law, chokepoints, and routing discipline—not military force—determine the stability and scalability of global trade."
-tags: ["maritime-law","uncos","chokepoints","global-trade","singapore","trade-flows"]
+tags: ["maritime-law","unclos","chokepoints","global-trade","singapore","trade-flows"]
 related_nodes: ["singapore"]
 related_commodities: ["oil","lng"]
 ---
@@ -151,13 +151,13 @@ The future of global trade will not be decided by who controls the sea.
 
 It will be decided by **who keeps it usable**.
 
-## System Map
+## System Context
 
-This article is part of a broader system of concepts:
+This article belongs to a wider conceptual system:
 
-- Maritime Chokepoint → defines structural constraint
-- Flow Coordination → defines operational stability
-- Trade Flow → defines movement logic
-- Singapore → represents applied system model
+- Maritime Chokepoint → structural constraint within global movement
+- Flow Coordination → operational discipline that preserves continuity
+- Trade Flow → the logic of movement across routes and nodes
+- Singapore → a real-world model of rule-based routing power
 
-Together, these elements form a coordinated system of global trade stability.
+Together, these elements explain how trade stability depends not only on geography, but on disciplined systems of movement.
