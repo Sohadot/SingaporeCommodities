@@ -360,6 +360,21 @@ class ContentLoader:
             "date": frontmatter.get("date"),
             "updated_at": frontmatter.get("updated_at"),
             "tags": self._normalize_string_list(frontmatter.get("tags"), field_name="tags", path=path),
+            "related_nodes": self._normalize_string_list(
+                frontmatter.get("related_nodes"),
+                field_name="related_nodes",
+                path=path,
+            ),
+            "related_terms": self._normalize_string_list(
+                frontmatter.get("related_terms"),
+                field_name="related_terms",
+                path=path,
+            ),
+            "visual_assets": self._normalize_string_list(
+                frontmatter.get("visual_assets"),
+                field_name="visual_assets",
+                path=path,
+            ),
             "schema_type": frontmatter.get("schema_type", schema_type),
             "content": content_payload,
         }

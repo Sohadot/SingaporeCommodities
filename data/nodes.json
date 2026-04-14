@@ -22,6 +22,9 @@
     "key_institutions": ["MAS", "SGX", "MPA", "EDB", "IE Singapore"],
     "key_benchmarks": ["MOPS", "JKM-linked", "SICOM TSR 20"],
     "chokepoints": ["Strait of Malacca", "Strait of Singapore"],
+    "related_terms": ["maritime-chokepoint", "routing-power", "trade-flow", "flow-coordination"],
+    "related_nodes": ["dubai", "rotterdam", "london", "geneva", "shanghai"],
+    "visual_assets": ["maritime-chokepoints-routing-map.webp"],
     "narrative": "Singapore does not produce commodities. It coordinates their movement. Positioned at the intersection of the Indian Ocean and the South China Sea, Singapore translates commodity flow into organized market relevance through routing intelligence, financial depth, and logistical density."
   },
   {

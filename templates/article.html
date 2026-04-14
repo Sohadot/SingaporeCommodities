@@ -48,6 +48,20 @@
   </div>
 </section>
 
+{% if page.visual_assets %}
+<section class="section-block section-block-surface" aria-labelledby="article-visual-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Visual Context</p>
+      <h2 id="article-visual-title" class="section-title">Reference image</h2>
+    </div>
+    <figure class="content-figure">
+      <img src="/assets/images/{{ page.visual_assets[0] }}" alt="{{ page.title }}" loading="lazy" decoding="async">
+    </figure>
+  </div>
+</section>
+{% endif %}
+
 {% if page.content and page.content.highlights %}
 <section class="section-block section-block-surface" aria-labelledby="article-highlights-title">
   <div class="shell">
@@ -109,6 +123,28 @@
     </article>
 
     <aside class="content-rail" aria-label="Article metadata">
+      {% if page.related_terms %}
+      <article class="detail-card">
+        <h3 class="detail-title">Related terms</h3>
+        <div class="tag-list">
+          {% for term_slug in page.related_terms %}
+          <a href="/glossary/{{ term_slug }}/" class="tag-item">{{ term_slug | replace("-", " ") | title }}</a>
+          {% endfor %}
+        </div>
+      </article>
+      {% endif %}
+
+      {% if page.related_nodes %}
+      <article class="detail-card">
+        <h3 class="detail-title">Related nodes</h3>
+        <div class="tag-list">
+          {% for node_slug in page.related_nodes %}
+          <a href="/nodes/{{ node_slug }}/" class="tag-item">{{ node_slug | replace("-", " ") | title }}</a>
+          {% endfor %}
+        </div>
+      </article>
+      {% endif %}
+
       {% if page.content and page.content.summary %}
       <article class="detail-card">
         <h3 class="detail-title">Summary</h3>

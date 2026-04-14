@@ -89,7 +89,7 @@ It shows that the highest-value node is not always the one that controls by forc
 
 ## Visual Reference
 
-![Maritime chokepoints routing map showing Hormuz and Malacca energy flows](/assets/img/maritime-chokepoints-routing-map.webp)
+![Maritime chokepoints routing map showing Hormuz and Malacca energy flows](/assets/images/maritime-chokepoints-routing-map.webp)
 
 *Global maritime routing constraints highlighting the strategic role of chokepoints such as Hormuz and the Straits of Malacca and Singapore.*
 

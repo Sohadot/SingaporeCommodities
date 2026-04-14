@@ -122,6 +122,8 @@ class DataPageGenerator:
         category = str(term.get("category", "general")).strip()
         tier = str(term.get("tier", "secondary")).strip()
         related = term.get("related_terms", [])
+        related_nodes = term.get("related_nodes", [])
+        visual_assets = term.get("visual_assets", [])
         platform_context = str(term.get("platform_context", "")).strip()
 
         url_path = f"/glossary/{slug}/"
@@ -154,6 +156,8 @@ class DataPageGenerator:
                 "category": category,
                 "tier": tier,
                 "related_terms": related if isinstance(related, list) else [],
+                "related_nodes": related_nodes if isinstance(related_nodes, list) else [],
+                "visual_assets": visual_assets if isinstance(visual_assets, list) else [],
                 "platform_context": platform_context,
             },
         }
@@ -318,6 +322,9 @@ class DataPageGenerator:
         key_commodities = node.get("key_commodities", [])
         key_institutions = node.get("key_institutions", [])
         key_benchmarks = node.get("key_benchmarks", [])
+        related_terms = node.get("related_terms", [])
+        related_nodes = node.get("related_nodes", [])
+        visual_assets = node.get("visual_assets", [])
 
         url_path = f"/nodes/{slug}/"
         base = site_data["url"].rstrip("/")
@@ -367,6 +374,9 @@ class DataPageGenerator:
                 "key_commodities": key_commodities if isinstance(key_commodities, list) else [],
                 "key_institutions": key_institutions if isinstance(key_institutions, list) else [],
                 "key_benchmarks": key_benchmarks if isinstance(key_benchmarks, list) else [],
+                "related_terms": related_terms if isinstance(related_terms, list) else [],
+                "related_nodes": related_nodes if isinstance(related_nodes, list) else [],
+                "visual_assets": visual_assets if isinstance(visual_assets, list) else [],
             },
         }
 

@@ -48,6 +48,20 @@
   </div>
 </section>
 
+{% if node.visual_assets %}
+<section class="section-block section-block-surface" aria-labelledby="node-visual-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Visual Context</p>
+      <h2 id="node-visual-title" class="section-title">Reference image</h2>
+    </div>
+    <figure class="content-figure">
+      <img src="/assets/images/{{ node.visual_assets[0] }}" alt="{{ node.name }}" loading="lazy" decoding="async">
+    </figure>
+  </div>
+</section>
+{% endif %}
+
 {% if node.power_scores %}
 <section class="section-block section-block-surface" aria-labelledby="scores-title">
   <div class="shell">
@@ -140,6 +154,38 @@
         <h3 class="detail-title">{{ "%02d"|format(loop.index) }}</h3>
         <p class="detail-value">{{ benchmark }}</p>
       </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if node.related_terms %}
+<section class="section-block section-block-surface" aria-labelledby="related-terms-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Related Terms</p>
+      <h2 id="related-terms-title" class="section-title">Concepts linked to this node</h2>
+    </div>
+    <div class="tag-list">
+      {% for term_slug in node.related_terms %}
+      <a href="/glossary/{{ term_slug }}/" class="tag-item">{{ term_slug | replace("-", " ") | title }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if node.related_nodes %}
+<section class="section-block" aria-labelledby="related-nodes-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Related Nodes</p>
+      <h2 id="related-nodes-title" class="section-title">Compare neighboring node profiles</h2>
+    </div>
+    <div class="tag-list">
+      {% for related_node_slug in node.related_nodes %}
+      <a href="/nodes/{{ related_node_slug }}/" class="tag-item">{{ related_node_slug | replace("-", " ") | title }}</a>
       {% endfor %}
     </div>
   </div>

@@ -9,7 +9,9 @@ reading_time: "9"
 description: "An institutional analysis of how maritime law, chokepoints, and routing discipline—not military force—determine the stability and scalability of global trade."
 tags: ["maritime-law","unclos","chokepoints","global-trade","singapore","trade-flows"]
 related_nodes: ["singapore"]
+related_terms: ["maritime-chokepoint", "routing-power", "trade-flow", "flow-coordination"]
 related_commodities: ["oil","lng"]
+visual_assets: ["maritime-chokepoints-routing-map.webp"]
 ---
 
 Global trade is often interpreted through the lens of power projection — fleets, sanctions, and territorial control.

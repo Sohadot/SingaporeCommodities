@@ -159,6 +159,9 @@ class PageRenderer:
                 "url_path": normalized_path,
                 "schema": schema,
                 "content": node.get("content", {}),
+                "related_nodes": node.get("related_nodes", []),
+                "related_terms": node.get("related_terms", []),
+                "visual_assets": node.get("visual_assets", []),
             },
         }
 

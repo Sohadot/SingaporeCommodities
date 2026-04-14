@@ -40,6 +40,20 @@
   </div>
 </section>
 
+{% if term.visual_assets %}
+<section class="section-block section-block-surface" aria-labelledby="term-visual-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Visual Context</p>
+      <h2 id="term-visual-title" class="section-title">Reference image</h2>
+    </div>
+    <figure class="content-figure">
+      <img src="/assets/images/{{ term.visual_assets[0] }}" alt="{{ term.name }}" loading="lazy" decoding="async">
+    </figure>
+  </div>
+</section>
+{% endif %}
+
 {% if term.platform_context %}
 <section class="section-block section-block-surface" aria-labelledby="context-title">
   <div class="shell narrow-shell">
@@ -64,6 +78,22 @@
     <div class="tag-list" role="list">
       {% for related_slug in term.related_terms %}
       <a href="/glossary/{{ related_slug }}/" class="tag-item" role="listitem">{{ related_slug | replace("-", " ") | title }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if term.related_nodes %}
+<section class="section-block" aria-labelledby="related-nodes-title">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="section-kicker">Related Nodes</p>
+      <h2 id="related-nodes-title" class="section-title">Explore connected node profiles</h2>
+    </div>
+    <div class="tag-list" role="list">
+      {% for node_slug in term.related_nodes %}
+      <a href="/nodes/{{ node_slug }}/" class="tag-item" role="listitem">{{ node_slug | replace("-", " ") | title }}</a>
       {% endfor %}
     </div>
   </div>

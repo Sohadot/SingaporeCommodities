@@ -9,6 +9,7 @@ import json
 import os
 import re
 import sys
+import io
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional, Union
@@ -20,6 +21,19 @@ class BuildError(Exception):
 
 class Logger:
     """Minimal structured logger."""
+
+    def __init__(self) -> None:
+        self._configure_utf8_stream(sys.stdout)
+        self._configure_utf8_stream(sys.stderr)
+
+    def _configure_utf8_stream(self, stream: Any) -> None:
+        # Ensure Unicode-safe logging on Windows terminals using legacy code pages.
+        if isinstance(stream, io.TextIOBase):
+            try:
+                stream.reconfigure(encoding="utf-8", errors="strict")
+            except Exception:
+                # Keep existing stream configuration when reconfigure is unavailable.
+                pass
 
     def info(self, message: str) -> None:
         print(f"[INFO] {message}", file=sys.stdout)

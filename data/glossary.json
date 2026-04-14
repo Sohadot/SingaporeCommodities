@@ -41,7 +41,9 @@
     "category": "infrastructure",
     "tier": "core",
     "definition": "A narrow passage of water through which a disproportionately large share of global maritime trade must pass, making it a point of strategic vulnerability and leverage. Control of, proximity to, or disruption of a maritime chokepoint has systemic consequences for global commodity flows.",
-    "related_terms": ["strait-of-malacca", "routing-power", "flow-stabilization"],
+    "related_terms": ["routing-power", "trade-flow", "flow-coordination", "strait-of-malacca"],
+    "related_nodes": ["singapore"],
+    "visual_assets": ["maritime-chokepoints-routing-map.webp"],
     "platform_context": "The Strait of Malacca is the defining chokepoint for Singapore's strategic position. Approximately 40% of global trade passes through it annually."
   },
   {
