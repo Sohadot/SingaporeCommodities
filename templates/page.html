@@ -136,7 +136,7 @@
     <ul class="detail-list">
       {% for article in collections.articles %}
       <li class="detail-list-item">
-        <a href="{{ article.url_path }}" class="text-link">{{ article.title }}</a>
+        <a href="/articles/{{ article.slug }}/" class="text-link">{{ article.title }}</a>
       </li>
       {% endfor %}
     </ul>
