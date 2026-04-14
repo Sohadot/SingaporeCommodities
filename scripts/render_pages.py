@@ -63,6 +63,7 @@ class PageRenderer:
                         navigation=navigation,
                         environment=environment,
                         schema=schema,
+                        collections=collections,
                     )
                 )
 
@@ -127,6 +128,7 @@ class PageRenderer:
         navigation: Dict[str, Any],
         environment: str,
         schema: str,
+        collections: Dict[str, Any] | None = None,
     ) -> Dict[str, Any]:
         required_fields = ("title", "description", "url_path", "template")
         for field in required_fields:
@@ -163,6 +165,7 @@ class PageRenderer:
                 "related_terms": node.get("related_terms", []),
                 "visual_assets": node.get("visual_assets", []),
             },
+            "collections": collections or {},
         }
 
         template_name = node.get("template", "page.html")

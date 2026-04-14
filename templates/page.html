@@ -125,4 +125,22 @@
   </div>
 </section>
 {% endif %}
+
+{% if page.slug == "articles" and collections.articles %}
+<section class="section-block section-block-surface" aria-labelledby="articles-list-title">
+  <div class="shell narrow-shell">
+    <div class="section-heading">
+      <p class="section-kicker">Published Analysis</p>
+      <h2 id="articles-list-title" class="section-title">Article index</h2>
+    </div>
+    <ul class="detail-list">
+      {% for article in collections.articles %}
+      <li class="detail-list-item">
+        <a href="{{ article.url_path }}" class="text-link">{{ article.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
 {% endblock %}
