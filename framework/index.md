@@ -10,3 +10,4 @@ This section defines the conceptual architecture of Singapore Commodities.
 - Systemic Trade Control
 - Discipline Under Constraint
 - Trusted Passage
+- [Routing Power](/framework/routing-power/)
