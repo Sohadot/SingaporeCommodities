@@ -22,6 +22,8 @@ This is **Routing Power**.
 
 Routing Power is the ability to structure, direct, and stabilize the pathways through which global commodities, energy, and goods flow.
 
+This logic extends beyond route design into a broader model of [Systemic Trade Control](/framework/systemic-trade-control/).
+
 It does not require ownership of the commodities themselves.  
 It does not require direct control over production.
 
